@@ -1,7 +1,6 @@
 // Hapi
 import * as Hapi from '@hapi/hapi';
 import * as HapiSwagger from 'hapi-swagger';
-import * as HapiJWT from 'hapi-auth-jwt2';
 import * as HapiBearer from 'hapi-auth-bearer-token';
 import * as Boom from '@hapi/boom';
 import * as Inert from '@hapi/inert';
@@ -9,44 +8,21 @@ import * as Vision from '@hapi/vision';
 
 // libs
 import * as path from 'path';
-import Hemera from 'nats-hemera';
 import Pino from 'pino';
-import Nats from 'nats';
 import axios, { AxiosInstance } from 'axios';
 import _ from 'lodash';
 import { constants as StatusCodes } from 'http2';
 import * as Status from 'http-status-codes';
 
 // Other
-import * as I from '../../types/common/App';
-import routesV1 from './routes/1_0';
-import authService from './routes/1_0/Auth/Auth/strategies';
-import { Strategies } from '../../types/api-service/Routes/Auth/Strategies/interfaces';
-import { typeError as TypeError } from '../../types/common/enums';
-import * as T from '../../types/common/types';
-// import {
-//   allowedHostsDev,
-//   allowedHostsLoc,
-//   allowedHostsProd,
-//   allowedHostsStg,
-// } from '../../constants';
-// import { enumToArray } from '../../libs/helpers';
 
 class App {
   // Vars
-  private hemeraConnection: Hemera<Nats.Client, Hemera.Config>;
 
-  private mvpApi: AxiosInstance;
-
-  private analyticsApi: AxiosInstance;
-
-  private natsConnection: Nats.Client;
 
   private logger: Pino.Logger;
 
   private server: Hapi.Server;
-
-  public config: I.ProcessEnv;
 
   private error: Boom.Boom;
 
@@ -95,42 +71,11 @@ class App {
     this.logger = Pino(loggerConfig);
   }
 
-  private initNatsConnection() {
-    this.natsConnection = Nats.connect({
-      servers: [`${process.env.NATS_URI}`],
-    });
-
-    return this.natsConnection;
-  }
-
-  private initHemeraConnection() {
-    this.hemeraConnection = new Hemera(this.nats, {
-      logLevel: Number(process.env.TEST_MODE) ? 'error' : 'info',
-      timeout: +(process.env.HEMERA_TIMEOUT || '2000'),
-    });
-
-    return this.hemeraConnection;
-  }
 
   public get responseCode() {
     return Status;
   }
 
-  public get nats() {
-    return this.natsConnection;
-  }
-
-  public get hemera() {
-    return this.hemeraConnection;
-  }
-
-  public get mvpApiInstance() {
-    return this.mvpApi;
-  }
-
-  public get analyticsApiInstance() {
-    return this.analyticsApi;
-  }
 
   public get serverInstance() {
     return this.server;
@@ -140,21 +85,6 @@ class App {
     return this.server.stop();
   }
 
-  public get params(): I.ProcessEnv {
-    return this.config;
-  }
-
-  private async initMvpApi() {
-    this.mvpApi = axios.create({
-      baseURL: `${process.env.MVP_API_BASE_URL}`,
-    });
-  }
-
-  private async initAnalyticsApi() {
-    this.analyticsApi = axios.create({
-      baseURL: `${process.env.ANALYTICS_API_BASE_URL}`,
-    });
-  }
 
   public get log(): Pino.Logger {
     return this.logger;
@@ -166,16 +96,8 @@ class App {
       logger.error('unhandledRejection', err);
     });
 
-    this.config = {
-      ...env,
-    };
-
     try {
       this.initLogger();
-      this.initNatsConnection();
-      await this.initMvpApi();
-      await this.initAnalyticsApi();
-      this.initHemeraConnection();
       await this.initServer();
       await this.server.start();
       !Number(process.env.TEST_MODE) &&
@@ -209,20 +131,6 @@ class App {
       routes: {
         cors: {
           origin: ['*'],
-          // origin: (this.config.APP_NAME_ENV === I.Environments.LOC && [
-          //   ...enumToArray(allowedHostsLoc),
-          //   ...enumToArray(allowedHostsDev),
-          // ]) ||
-          //   (this.config.APP_NAME_ENV === I.Environments.DEV && [
-          //     ...enumToArray(allowedHostsLoc),
-          //     ...enumToArray(allowedHostsDev),
-          //   ]) ||
-          //   (this.config.APP_NAME_ENV === I.Environments.STAGING && [
-          //     ...enumToArray(allowedHostsStg),
-          //   ]) ||
-          //   (this.config.APP_NAME_ENV === I.Environments.PROD && [
-          //     ...enumToArray(allowedHostsProd),
-          //   ]) || ['*'],
           credentials: true,
         },
         validate: {
@@ -238,35 +146,9 @@ class App {
       },
     });
 
-    this.server.state('refreshToken', {
-      ttl: 1000 * 60 * 60 * 24 * 30,
-      isSecure: false,
-      isHttpOnly: false,
-      isSameSite: 'Strict',
-      encoding: 'base64json',
-      clearInvalid: true,
-      strictHeader: true,
-      path: '/',
-      // domain: this.config.DOMAIN_COOKIE,
-    });
-    this.server.state('uid', {
-      ttl: 1000 * 60 * 60 * 24 * 30 * 60,
-      isSecure: false,
-      isHttpOnly: false,
-      isSameSite: 'Strict',
-      encoding: 'base64json',
-      clearInvalid: true,
-      strictHeader: true,
-      path: '/',
-      // domain: this.config.DOMAIN_COOKIE,
-    });
-
     await this.server.register([
       {
         plugin: HapiBearer,
-      },
-      {
-        plugin: HapiJWT,
       },
       {
         plugin: Inert,
