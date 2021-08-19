@@ -1,0 +1,17 @@
+FROM rlab.lad24.ru/hi-brain/hibrain-backend-new-api/image:node
+
+RUN apk update --no-cache
+
+ARG WORKDIR=/usr/src/app/packages/api-service/
+
+RUN mkdir -p /usr/src/app
+
+WORKDIR ${WORKDIR}
+
+COPY package*.json /usr/src/app/
+
+RUN npm i --production
+
+COPY  ./build /usr/src/app/
+
+CMD [ "node", "start.js" ]
