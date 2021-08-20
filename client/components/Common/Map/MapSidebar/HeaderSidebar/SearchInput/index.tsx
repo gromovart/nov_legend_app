@@ -14,20 +14,20 @@ const SearchInput: React.FC<TSearchInputProps> = ({
   value,
 }) => {
   const onChange = (evt: React.FormEvent<HTMLInputElement>) => {
-    // onChangeSearch(evt.currentTarget.value);
+    onChangeSearch(evt.currentTarget.value);
   };
   const buttonClickHandler = () => {
     // clearSearch();
   };
   return (
     <>
-      <div className={`${style.inputbox}`}>
+      <div className={`${style.search}`}>
         <>
           <input
             id="search"
-            className={`${style.inputbox__input} ${
-              value && style['not-empty']
-            } ${value && style.customOpacity}`}
+            className={`${style.search__input} ${value && style['not-empty']} ${
+              value && style.customOpacity
+            }`}
             type="text"
             value={value}
             onChange={onChange}

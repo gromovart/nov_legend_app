@@ -1,9 +1,18 @@
-import { IDecoratedRequest, IToolKit } from '../../utils/App';
+import { IDecoratedRequest } from '../../utils/App';
 import app from '../../app';
 import AuthServices from '../../services/Auth';
 
 export default {
-  signUpUser: async (request: IDecoratedRequest): Promise<any> => {
+  signUpUser: async (
+    request: IDecoratedRequest<{
+      firstName: string;
+      lastName: string;
+      middleName: string;
+      login: string;
+      password: string;
+      isActive: boolean;
+    }>
+  ): Promise<any> => {
     const { payload } = request;
     try {
       return await AuthServices.signUpUser({
@@ -23,7 +32,12 @@ export default {
       return app.generateHttpError(e);
     }
   },
-  signIn: async (request: IDecoratedRequest): Promise<any> => {
+  signIn: async (
+    request: IDecoratedRequest<{
+      login: string;
+      password: string;
+    }>
+  ): Promise<any> => {
     try {
       const { payload } = request;
 

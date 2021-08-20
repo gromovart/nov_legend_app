@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import style from '../../style.module.scss';
 import SearchInput from './SearchInput';
 
@@ -12,8 +13,9 @@ const HeaderSidebar: React.FC<THeaderSidebarProps> = ({
   goBack,
   onChangeSearch,
   clearSearch,
-  value,
+  // value,
 }) => {
+  const [value, setValue] = useState('');
   // const count = useSelector(getMarkersCount);
   // const searchCount = useSelector(getSearchCount);
   return (

@@ -3,25 +3,30 @@
 @import 'assets/scss/helpers/media';
 @import 'assets/scss/helpers/variables';
 
-.inputbox {
+.search {
   display: flex;
   flex-direction: column-reverse;
   position: relative;
+  background-color: #fff;
+  border-radius: 8px;
 
   &.has-padding {
     padding-top: 18px;
     @include media(tablet) {
       margin-bottom: 16px;
     }
-    .inputbox__label {
+
+    .search__label {
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
     }
-    .inputbox__input {
+
+    .search__input {
       padding-top: 0px;
     }
   }
+
   &__label {
     display: block;
     position: absolute;
@@ -31,14 +36,15 @@
     order: 1;
     transition: all 0.25s ease;
   }
+
   &__input {
     appearance: none;
     box-sizing: border-box;
     padding: 24px 16px 8px;
     padding-right: 40px;
     opacity: 0.2;
-    border: 1px solid #342b2b;
-
+    border: 1px solid #fff;
+    border-radius: 8px;
     font-size: 16px;
 
     font-weight: 300;
@@ -51,24 +57,29 @@
       border: 1px solid #1e3daf;
       opacity: 1;
     }
+
     &:focus {
       outline: none;
       border: 1px solid #1e3daf;
       opacity: 1;
       color: rgba(52, 43, 43, 1);
+
       & ~ label {
         padding: 8px 16px 32px;
         color: $blue;
         font-size: 12px;
       }
     }
+
     &.not-empty {
       opacity: 1;
       border: 1px solid rgba(52, 43, 43, 0.2);
+
       & ~ label {
         padding: 8px 16px 32px;
         font-size: 12px;
       }
+
       & ~ input {
         opacity: 1;
         color: red;
@@ -81,6 +92,7 @@
   display: flex;
   flex-direction: column;
   position: relative;
+
   &__label {
     display: block;
     position: absolute;
@@ -97,6 +109,7 @@
       // bottom: 4px;
       font-size: 14px;
     }
+
     &.not-empty {
       // opacity: 1;
       padding: 8px 16px 32px;
