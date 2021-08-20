@@ -12,8 +12,8 @@ export = {
   entities: ['database/entities/**/*{.ts,.js}'],
   migrations: ['database/migrations/**/*{.ts,.js}'],
   cli: {
-    migrationsDir: ['database/migrations'],
-    entitiesDir: ['database/entities'],
+    migrationsDir: 'database/migrations',
+    entitiesDir: 'database/entities',
   },
   logging: ((): LoggerOptions => {
     return ['migration', 'error'];
