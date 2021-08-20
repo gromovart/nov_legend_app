@@ -4,7 +4,7 @@ import AuthControllers from '../../controllers/Auth';
 export default [
   {
     method: 'POST',
-    path: '/sign-in',
+    path: '/sign-up',
     options: {
       validate: {
         payload: <any>Joi.object().keys({
@@ -36,7 +36,7 @@ export default [
   },
   {
     method: 'POST',
-    path: '/sign-up',
+    path: '/sign-in',
     options: {
       validate: {
         payload: <any>Joi.object().keys({

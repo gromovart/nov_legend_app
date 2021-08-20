@@ -1,23 +1,14 @@
-import { v4 as uuidv4 } from 'uuid';
 import { IDecoratedRequest, IToolKit } from '../../utils/App';
 import app from '../../app';
 import AuthServices from '../../services/Auth';
 
 export default {
   signUpUser: async (request: IDecoratedRequest): Promise<any> => {
+    const { payload } = request;
     try {
-      return await AuthServices.signUpUser(
-        {
-          payload: {
-            firstName: 'string',
-            lastName: 'string',
-            middleName: 'string',
-            login: 'string',
-            password: 'string',
-          },
-        },
-        {}
-      );
+      return await AuthServices.signUpUser({
+        payload,
+      });
     } catch (e) {
       app.log.error(e);
       return app.generateHttpError(e);
@@ -25,18 +16,19 @@ export default {
   },
   authUser: async (request: IDecoratedRequest, token: string): Promise<any> => {
     try {
-      return await AuthServices.signUpUser(
-        {
-          payload: {
-            firstName: 'string',
-            lastName: 'string',
-            middleName: 'string',
-            login: 'string',
-            password: 'string',
-          },
-        },
-        {}
-      );
+      const { headers } = request;
+      return await AuthServices.authUser({ headers, token });
+    } catch (e) {
+      app.log.error(e);
+      return app.generateHttpError(e);
+    }
+  },
+  signIn: async (request: IDecoratedRequest): Promise<any> => {
+    try {
+      const { payload } = request;
+
+      const response = await AuthServices.signIn({ payload });
+      return response;
     } catch (e) {
       app.log.error(e);
       return app.generateHttpError(e);

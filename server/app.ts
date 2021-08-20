@@ -12,6 +12,7 @@ import Pino from 'pino';
 import _ from 'lodash';
 import { constants as StatusCodes } from 'http2';
 import * as Status from 'http-status-codes';
+import { Connection, createConnection } from 'typeorm';
 import * as T from './utils/types';
 import { typeError as TypeError } from './utils/enums';
 import * as I from './utils/App';
@@ -29,6 +30,8 @@ class App {
   private server: Hapi.Server;
 
   private error: Boom.Boom;
+
+  private db: Connection;
 
   // Methods
   public generateHttpError(
@@ -79,6 +82,10 @@ class App {
     return Status;
   }
 
+  public get connection() {
+    return this.db;
+  }
+
   public get serverInstance() {
     return this.server;
   }
@@ -91,6 +98,11 @@ class App {
     return this.logger;
   }
 
+  private async initDB() {
+    this.db = await createConnection();
+    await this.db.runMigrations();
+  }
+
   public async start(env: any): Promise<Hapi.Server> {
     process.on('unhandledRejection', (err) => {
       const logger = this.log || console;
@@ -99,6 +111,7 @@ class App {
 
     try {
       this.initLogger();
+      await this.initDB();
       await this.initServer();
       await this.server.start();
       !Number(process.env.TEST_MODE) &&
