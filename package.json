@@ -4,7 +4,35 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "expand": "docker network create $npm_package_config_envs_NETWORK_NAME || true && npm run build-image:server",
+    "up": "npm run up:postgres || true && npm run up:server || true",
+    "down": "npm run down:server || true && npm run down:postgres || true",
+    "start:server": "docker exec $npm_package_config_envs_CONTAINER_NAME_SERVER npm run start",
+    "start:client": "cd ./client && npm run start",
+    "build-image:server": "docker build -t $npm_package_config_envs_IMAGE_NAME_SERVER -f dockerfiles/local.dockerfile .",
+    "up:server": "docker run --rm -it -d -p 8888:8888 --user $(id -u):$(id -g) --name $npm_package_config_envs_CONTAINER_NAME_SERVER --env-file $PWD/$npm_package_config_envs_VOLUME_PATH_SERVER/deployment/.env.local -v $PWD/$npm_package_config_envs_VOLUME_PATH_SERVER:/usr/src/app --network $npm_package_config_envs_NETWORK_NAME $npm_package_config_envs_IMAGE_NAME_SERVER",
+    "up:postgres": "docker rm $npm_package_config_envs_CONTAINER_NAME_POSTGRES || true && docker run --rm --name $npm_package_config_envs_CONTAINER_NAME_POSTGRES --network $npm_package_config_envs_NETWORK_NAME -p 5434:5432 -v $PWD/$npm_package_config_envs_VOLUME_PATH_SERVER/scripts/pg-init-scripts:/docker-entrypoint-initdb.d -e POSTGRES_MULTIPLE_DATABASES=$npm_package_config_envs_DB_NAME -d postgres:12.1-alpine || true",
+    "down:server": "docker stop $npm_package_config_envs_CONTAINER_NAME_SERVER",
+    "down:postgres": "docker stop $npm_package_config_envs_CONTAINER_NAME_POSTGRES",
+    "test": "echo test",
+    "commit": "git add --all && cz"
+  },
+  "config": {
+    "envs": {
+      "CONTAINER_NAME_SERVER": "nov_legend_app_server",
+      "CONTAINER_NAME_POSTGRES": "nov_legend_app_postgres",
+      "NETWORK_NAME": "nov_legend_app_net",
+      "IMAGE_NAME_SERVER": "nov_legend_app_server:v1",
+      "VOLUME_PATH_SERVER": "server",
+      "VOLUME_PATH_UI": "client",
+      "DB_NAME": "nov_legend_app"
+    },
+    "commitizen": {
+      "path": "node_modules/cz-customizable"
+    },
+    "cz-customizable": {
+      "config": "commitizen.js"
+    }
   },
   "repository": {
     "type": "git",
