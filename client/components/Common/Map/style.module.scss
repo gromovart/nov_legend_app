@@ -330,6 +330,9 @@
 
 .map_window {
   display: flex;
+  min-height: 663px;
+  gap: 10px;
+
   width: 100%;
   min-height: 80vh;
   @include media(tablet) {
@@ -400,4 +403,22 @@
   &:hover {
     text-decoration: none;
   }
+}
+
+.sidebar__header {
+  border-radius: 10px;
+  background: #fafaff;
+  padding: 10px;
+  margin-bottom: 15px;
+}
+
+.header__title {
+  font-family: Inter;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 30px;
+  margin-bottom: 10px;
+
+  color: #474747;
 }

@@ -1,6 +1,8 @@
+import React from 'react';
 import style from '../style.module.scss';
 import HeaderSidebar from './HeaderSidebar';
 import SidebarMenu from './SidebarMenu';
+import ActualMenuItem from './SidebarMenu/CategoriesMenu/ActualMenuItem';
 
 type TProps = {
   goBack: () => void;
@@ -31,6 +33,7 @@ const MapSidebar: React.FC<TProps & any> = ({
         onChangeSearch={onChangeSearch}
         value={value}
       />
+      <ActualMenuItem />
       <SidebarMenu
         sidebarClickHandler={sidebarClickHandler}
         searchValue={searchValue}
