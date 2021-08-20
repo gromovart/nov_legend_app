@@ -4,7 +4,9 @@ import style from './styled.module.scss';
 const Header = () => {
   return (
     <div className={`container ${style.header__wrapper}`}>
-      <div className={style.header__logo}>Travelix Pro</div>
+      <div className={style.header__logo}>
+        <span className={style.logo_title}>Travelix</span> Pro
+      </div>
       <div className={style.header__menu_items}>
         <a href="/" className={style.item}>
           Tours
