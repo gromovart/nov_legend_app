@@ -125,8 +125,8 @@ export const getAllMapMarkerQuery = Joi.object({
   mapCategoryId: Joi.number().optional().example([1]),
   state: Joi.string().optional(),
 })
-  .concat(V.mapName)
-  .concat(V.findOptionalQuery);
+  .concat(mapName)
+  .concat(findOptionalQuery);
 
 export const readMarkerParams = idParams;
 
