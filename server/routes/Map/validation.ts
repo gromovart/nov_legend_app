@@ -1,5 +1,5 @@
 import _ from 'lodash';
-import * as Joi from 'typesafe-joi';
+import Joi from 'joi';
 import * as Dictionary from '../../utils/Dictionary';
 import * as E from '../../utils/enums';
 

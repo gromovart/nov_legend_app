@@ -9,3 +9,7 @@ body {
   max-width: 1170px;
   margin: 0 auto;
 }
+
+.leaflet-map-pane svg {
+  transform: rotate(180deg);
+}

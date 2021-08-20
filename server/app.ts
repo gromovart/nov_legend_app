@@ -16,7 +16,7 @@ import { Connection, createConnection } from 'typeorm';
 import * as T from './utils/types';
 import { typeError as TypeError } from './utils/enums';
 import * as I from './utils/App';
-import routesV1 from './routes/Auth';
+import routesV1 from './routes';
 import { Strategies } from './controllers/Auth/Strategies/interfaces';
 import authService from './controllers/Auth/strategies';
 
