@@ -9,16 +9,20 @@ import * as Vision from '@hapi/vision';
 // libs
 import * as path from 'path';
 import Pino from 'pino';
-import axios, { AxiosInstance } from 'axios';
 import _ from 'lodash';
 import { constants as StatusCodes } from 'http2';
 import * as Status from 'http-status-codes';
+import * as T from './utils/types';
+import { typeError as TypeError } from './utils/enums';
+import * as I from './utils/App';
+import routesV1 from './routes/Auth';
+import { Strategies } from './controllers/Auth/Strategies/interfaces';
+import authService from './controllers/Auth/strategies';
 
 // Other
 
 class App {
   // Vars
-
 
   private logger: Pino.Logger;
 
@@ -49,7 +53,7 @@ class App {
 
   private initLogger() {
     const getEnvironmentConfig: () => Pino.LoggerOptions = () => {
-      switch (this.config.APP_NAME_ENV) {
+      switch (process.env.APP_NAME_ENV) {
         case I.Environments.LOC:
           return {
             prettyPrint: { colorize: true },
@@ -60,7 +64,7 @@ class App {
             },
           };
         case I.Environments.PROD:
-          return { level: this.config.LOG_LEVEL };
+          return { level: process.env.LOG_LEVEL };
         default:
           return {};
       }
@@ -71,11 +75,9 @@ class App {
     this.logger = Pino(loggerConfig);
   }
 
-
   public get responseCode() {
     return Status;
   }
-
 
   public get serverInstance() {
     return this.server;
@@ -84,7 +86,6 @@ class App {
   public async stop() {
     return this.server.stop();
   }
-
 
   public get log(): Pino.Logger {
     return this.logger;
@@ -112,7 +113,7 @@ class App {
       !Number(process.env.TEST_MODE) &&
         this.log.info(
           `Документация к  API доступна по адресу: ` +
-            `http://${this.server.info.address}:${this.server.info.port}${this.params.ROUTE_PREFIX}/documentation`
+            `http://${this.server.info.address}:${this.server.info.port}/api/documentation`
         );
     } catch (err) {
       const logger = this.log || console;
@@ -127,7 +128,7 @@ class App {
 
   private async initServer() {
     this.server = new Hapi.Server({
-      port: +this.params.SERVER_PORT,
+      port: 8888,
       routes: {
         cors: {
           origin: ['*'],
@@ -158,48 +159,39 @@ class App {
       },
     ]);
 
-    if (this.config.APP_NAME_ENV !== I.Environments.PROD) {
-      await this.server.register({
-        plugin: HapiSwagger,
-        options: <HapiSwagger.RegisterOptions>{
-          info: {
-            title: 'HIBRAIN',
-            description: 'JSON REST API HIBRAIN',
-            version: this.params.API_VERSION,
-          },
-          grouping: 'tags',
-          tagsGroupingFilter: (tag) =>
-            !['api', this.params.API_VERSION].includes(tag),
-          schemes: [
-            this.params.APP_NAME_ENV === I.Environments.LOC ? 'http' : 'https',
-          ],
-          documentationPath: `${this.params.ROUTE_PREFIX}/documentation`,
-          jsonPath: `${this.params.ROUTE_PREFIX}/swagger.json`,
-          swaggerUIPath: `${this.params.ROUTE_PREFIX}/swaggerui`,
-          securityDefinitions: {
-            Bearer: {
-              type: 'apiKey',
-              name: 'Authorization',
-              description: 'Bearer token',
-              in: 'header',
-            },
-          },
-          security: [{ Bearer: [] }],
+    await this.server.register({
+      plugin: HapiSwagger,
+      options: <HapiSwagger.RegisterOptions>{
+        info: {
+          title: 'HIBRAIN',
+          description: 'JSON REST API HIBRAIN',
+          version: process.env.API_VERSION,
         },
-      });
-    }
-
-    const auth = authService({
-      [I.EnvVars.JWT_SECRET]: this.params.JWT_SECRET,
-      [I.EnvVars.JWT_LIFESPAN]: this.params.JWT_LIFESPAN,
-      [I.EnvVars.JWT_ALGORITHM]: this.params.JWT_ALGORITHM,
-      [I.EnvVars.REFRESH_LIFESPAN]: this.params.REFRESH_LIFESPAN,
+        grouping: 'tags',
+        tagsGroupingFilter: (tag) =>
+          !['api', process.env.API_VERSION].includes(tag),
+        schemes: [
+          process.env.APP_NAME_ENV === I.Environments.LOC ? 'http' : 'https',
+        ],
+        documentationPath: `/api/documentation`,
+        jsonPath: `/api/swagger.json`,
+        swaggerUIPath: `/api/swaggerui`,
+        securityDefinitions: {
+          Bearer: {
+            type: 'apiKey',
+            name: 'Authorization',
+            description: 'Bearer token',
+            in: 'header',
+          },
+        },
+        security: [{ Bearer: [] }],
+      },
     });
+
+    const auth = authService();
+
     this.server.auth.strategy(Strategies.static, 'bearer-access-token', {
       validate: auth[Strategies.static],
-    });
-    this.server.auth.strategy(Strategies.staticJWT, 'bearer-access-token', {
-      validate: auth[Strategies.staticJWT],
     });
 
     this.server.events.on('response', (request) => {
@@ -229,8 +221,7 @@ class App {
       return true;
     });
 
-    if (this.params.ROUTE_PREFIX !== '/')
-      this.server.realm.modifiers.route.prefix = this.params.ROUTE_PREFIX;
+    this.server.realm.modifiers.route.prefix = '/api';
     this.server.route(routesV1);
   }
 }
