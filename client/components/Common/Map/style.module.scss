@@ -1,0 +1,373 @@
+@use "sass:math";
+
+@import 'assets/scss/helpers/media';
+@import 'assets/scss/helpers/variables';
+
+.icon {
+  display: inline-block;
+  vertical-align: middle;
+  width: 1em;
+  height: 1em;
+  fill: currentColor;
+}
+
+.icon-attention {
+  font-size: math.div(28, 14) * 1rem;
+  width: (1 * 1em);
+}
+
+.sidebar-menu_wrapper {
+  width: 363px;
+  padding-bottom: 24px;
+  @include media(tablet) {
+    width: 312px;
+  }
+  @include media(smartphone) {
+    width: 100%;
+    padding: 0 24px;
+    max-height: 100vh;
+  }
+  overflow: hidden;
+  &.mobile {
+    display: none;
+    @include media(smartphone) {
+      display: block;
+      max-height: 100%;
+      margin-top: 15px;
+      margin-bottom: 15px;
+    }
+  }
+}
+
+.header_button {
+  height: fit-content;
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  @include media(tablet) {
+    width: 312px;
+    height: 500px;
+  }
+  @include media(smartphone) {
+    width: 100%;
+    height: 100%;
+  }
+
+  &-header {
+    .header_title {
+      display: flex;
+      justify-content: space-between;
+      span {
+        color: $grey-light;
+      }
+    }
+    button {
+      border: none;
+      background: transparent;
+    }
+    padding: 32px 24px;
+    display: block;
+    width: 100%;
+    box-shadow: 0px 8px 16px rgba(30, 61, 175, 0.06);
+    @include media(tablet) {
+      padding-bottom: 16px;
+      box-shadow: none;
+    }
+  }
+  &-category-menu {
+    width: 100%;
+    max-height: 504px;
+    padding: 32px 24px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    // overflow-y: scroll;
+    @media screen and (min-width: 1024px) {
+      display: flex;
+      max-height: 950px;
+      flex-direction: row;
+      flex-wrap: wrap;
+    }
+    @include media(tablet) {
+      width: 312px;
+      padding-bottom: 0;
+    }
+    @include media(smartphone) {
+      width: 100%;
+      flex-wrap: nowrap;
+      padding: 0;
+    }
+    &.result {
+      @include media(smartphone) {
+        width: 100%;
+        height: 100vh;
+        flex-wrap: wrap;
+        flex-direction: column;
+        justify-content: flex-start;
+      }
+      &.desktop {
+        @include media(smartphone) {
+          display: none;
+        }
+      }
+    }
+    .menu-item {
+      position: relative;
+      width: 100%;
+      height: 56px;
+      background: rgba(238, 241, 242, 0.4);
+      margin-bottom: 16px;
+      margin-right: 16px;
+      text-align: center;
+      cursor: pointer;
+      @media screen and (min-width: 1024px) {
+        width: 150px;
+        margin-right: 0;
+      }
+      @include media(tablet) {
+        background: none;
+        text-align: left;
+        border-bottom: 1px solid rgba($grey-light, 0.4);
+        &::after {
+          //content: url('/chevron.svg');
+          position: absolute;
+          right: 0;
+          top: 10px;
+        }
+        height: 40px;
+        margin-bottom: 12px;
+      }
+      @include media(smartphone) {
+        width: auto;
+        height: 28px;
+        white-space: nowrap;
+        padding: 3px 12px;
+        background: rgba(238, 241, 242);
+        margin-bottom: 24px;
+        &::after {
+          content: '';
+        }
+        &:not(:last-child) {
+          margin-right: 8px;
+        }
+        &:last-child {
+          margin-right: 24px;
+        }
+      }
+      &:before {
+        content: '';
+        display: inline-block;
+        height: 100%;
+        vertical-align: middle;
+      }
+      span {
+        display: inline-block;
+        vertical-align: middle;
+        font-size: 12px;
+        font-weight: 400;
+        color: $text-color;
+      }
+    }
+  }
+  &-menu {
+    width: 100%;
+    max-height: 504px;
+    padding: 32px 24px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    // overflow-y: scroll;
+    @include media(tablet) {
+      width: 312px;
+      padding-bottom: 0;
+    }
+    @include media(smartphone) {
+      width: 100%;
+      flex-wrap: nowrap;
+      padding: 0;
+      flex-direction: column;
+      justify-content: flex-start;
+    }
+    &.result {
+      @include media(smartphone) {
+        width: 100%;
+        height: 100vh;
+        flex-wrap: wrap;
+      }
+      &.desktop {
+        @include media(smartphone) {
+          display: none;
+        }
+      }
+    }
+    .menu-item {
+      width: 100%;
+      height: 56px;
+      background: rgba(238, 241, 242, 0.4);
+      margin-bottom: 16px;
+      margin-right: 16px;
+      text-align: center;
+      cursor: pointer;
+      @include media(tablet) {
+        // width: 126px;
+        height: 40px;
+        margin-bottom: 12px;
+      }
+      @include media(smartphone) {
+        width: auto;
+        height: 28px;
+        white-space: nowrap;
+        padding: 3px 12px;
+        background: rgba(238, 241, 242);
+        margin-bottom: 24px;
+        &:not(:last-child) {
+          margin-right: 8px;
+        }
+        &:last-child {
+          margin-right: 24px;
+        }
+      }
+      &:before {
+        content: '';
+        display: inline-block;
+        height: 100%;
+        vertical-align: middle;
+      }
+      span {
+        display: inline-block;
+        vertical-align: middle;
+        font-size: 12px;
+        font-weight: 300;
+        color: $text-color;
+      }
+    }
+    .company-item {
+      text-align: left;
+      width: 100%;
+      border: none;
+      background: transparent;
+      outline: none;
+      cursor: pointer;
+      &:not(:last-child) {
+        border-bottom: 1px solid rgba($grey-light, 0.4);
+      }
+      &:first-child {
+        h5 {
+          margin-top: 0;
+        }
+      }
+      @include media(smartphone) {
+        margin-bottom: 12px;
+      }
+      h5 {
+        font-weight: 500;
+        line-height: 24px;
+        margin-top: 32px;
+
+        @include media(smartphone) {
+          margin-top: 0;
+          margin-bottom: 4px;
+        }
+      }
+      p {
+        color: $text-grey;
+        font-size: 14px;
+        line-height: 16px;
+        margin-bottom: 16px;
+        @include media(smartphone) {
+          margin-bottom: 12px;
+        }
+      }
+      &:hover {
+        background-color: rgba($grey-light, 0.1);
+      }
+      &_address {
+        display: flex;
+        p {
+          margin-left: 4px;
+        }
+      }
+    }
+  }
+}
+
+.map_window {
+  display: flex;
+  min-height: 663px;
+  @include media(tablet) {
+    min-height: auto;
+  }
+  @include media(smartphone) {
+    flex-direction: column-reverse;
+    min-height: auto;
+    border-top: 1px solid rgba($grey-light, 0.2);
+  }
+  .map_container {
+    width: 100%;
+    @include media(tablet) {
+      height: 500px;
+    }
+    @include media(smartphone) {
+      max-height: 100vw;
+    }
+    z-index: 0;
+    &.marker-info {
+      @include media(smartphone) {
+        max-height: 65vw;
+      }
+    }
+  }
+}
+
+.responsive-map {
+  width: 100%;
+  height: 100%;
+}
+
+.hide {
+  @include media(smartphone) {
+    display: none;
+  }
+}
+
+.popup {
+  background-color: #ffffff;
+  border: none;
+}
+
+.icon-map-pin {
+  color: $text-grey;
+  flex-shrink: 0;
+  width: 1em;
+}
+
+.search_fail {
+  font-size: 20px;
+  margin: 0 auto;
+}
+
+.show_more {
+  margin: 0 auto;
+  margin-top: 24px;
+  margin-bottom: 30px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  text-decoration: underline;
+  color: $grey-light;
+  font-size: 16px;
+
+  &:hover {
+    text-decoration: none;
+  }
+}
