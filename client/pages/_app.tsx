@@ -4,6 +4,8 @@ import Head from 'next/head';
 import { wrapper } from '../store';
 
 const WrappedApp: FC<AppProps> = ({ Component, pageProps }) => {
+  console.log('test');
+
   return (
     <>
       <Head>
