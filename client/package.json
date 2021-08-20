@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "antd": "^4.16.12",
     "@types/react-leaflet": "^2.8.1",
     "axios": "^0.21.1",
     "leaflet": "^1.7.1",

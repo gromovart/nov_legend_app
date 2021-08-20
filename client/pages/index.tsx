@@ -1,17 +1,10 @@
-import Link from 'next/link';
-import Layout from '../components/Layout';
-import MapComponent from '../components/Common/Map';
+import React from 'react';
+import MainPage from '../components/MainPage';
 
 const IndexPage = () => (
-  <Layout title="Home | Next.js + TypeScript Example">
-    <h1>Hello Next.js 👋</h1>
-    <p>
-      <Link href="/about" passHref>
-        <a>About</a>
-      </Link>
-    </p>
-    <MapComponent />
-  </Layout>
+  <>
+    <MainPage />
+  </>
 );
 
 export default IndexPage;
