@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "antd": "^4.16.12",
     "axios": "^0.21.1",
     "next": "latest",
     "next-redux-wrapper": "^7.0.2",
@@ -18,6 +19,7 @@
     "redux": "^4.1.1",
     "redux-devtools-extension": "^2.13.9",
     "redux-thunk": "^2.3.0",
+    "sass": "^1.38.0",
     "universal-cookie": "^4.0.4"
   },
   "devDependencies": {

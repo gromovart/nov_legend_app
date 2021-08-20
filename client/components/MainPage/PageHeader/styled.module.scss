@@ -1,0 +1,19 @@
+.container {
+  max-width: 1170px;
+  margin: 0 auto;
+}
+
+.page__header_wrapper {
+  background-color: #f4f6ff;
+  height: 100vh;
+  background: url('./Group262.png');
+  background-position: right top;
+  background-repeat: no-repeat;
+}
+
+.content__header {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  height: 100%;
+}
