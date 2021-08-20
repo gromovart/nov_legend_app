@@ -7,7 +7,7 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 import UserRoleInterface from './UserRoleInterface';
-import * as Dictionary from '../../../../types/auth-service/Dictionary';
+import * as Dictionary from '../../utils/Dictionary';
 
 @Entity({ name: 'role' })
 export default class Role {
