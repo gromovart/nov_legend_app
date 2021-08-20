@@ -1,8 +1,8 @@
 import * as Hapi from '@hapi/hapi';
 import { controllers } from '../../../../controllers/Storage/MapCategory';
-import * as V from '../../../../../../types/api-service/Routes/MapCategory/validation';
-import { Strategies } from '../../../../../../types/api-service/Routes/Auth/Strategies/interfaces';
-import * as Dictionary from '../../../../../../types/auth-service/Dictionary';
+import * as V from './validation';
+import { Strategies } from '../Auth/Strategies/interfaces';
+import * as Dictionary from '../../utils/Dictionary';
 
 const mapCategory: Hapi.ServerRoute[] = [
   {
