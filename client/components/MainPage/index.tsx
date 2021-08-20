@@ -1,5 +1,6 @@
 import React from 'react';
 import Header from '../Common/Header';
+import ChooseBlock from './ChooseBlock';
 import PageHeader from './PageHeader';
 // import style from './styled.module.scss';
 
@@ -10,6 +11,7 @@ const MainPage = () => {
         <Header />
       </div>
       <PageHeader />
+      <ChooseBlock />
     </>
   );
 };
