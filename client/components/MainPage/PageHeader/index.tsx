@@ -7,7 +7,8 @@ const PageHeader = () => {
       <div className={`container ${style.content__header}`}>
         <div className={style.description__title}>Journeys of Inspiration</div>
         <div className={style.page__header_title}>
-          Start Your Journey <br /> for Enjoy Life.
+          Start Your Journey <br /> for
+          <span className={style.title__accent}> Enjoy Life</span>.
         </div>
         <div className={style.header__description}>
           Travel Agency Threats and Opportunities. The Perspective of <br />
