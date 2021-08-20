@@ -1,7 +1,7 @@
-// import ScrollWrapper from 'components/Common/ScrollWrapper';
 import { useEffect, useRef } from 'react';
 import style from '../../style.module.scss';
-import CategoriesMenu from './CategoriesMenu';
+
+import ScrollWrapper from '../../../ScrollWrapper';
 
 const getHeight = () => {
   if (window && window.screen.width < 750) {
@@ -29,18 +29,25 @@ const SidebarMenu = ({
       scroll = scrollRef?.current?.viewScrollTop;
     }
   };
-
+  const dataList = [];
+  for (let i = 0; i < 100; i += 1) {
+    dataList[i] = { name: `name${i}`, description: `description${i}` };
+  }
   return (
     <div
       className={`${style['sidebar-menu_wrapper']} ${data ? style.hide : ''}`}
     >
-      {/* <ScrollWrapper scrollRef={scrollRef} maxHeight={getHeight()} scrollHandler={scrollHandler}> */}
-      <div
-        className={`${
-          searchValue ? style['sidebar-menu'] : style['sidebar-category-menu']
-        } ${searchValue ? style.result : ''} ${data ? style.desktop : ''}`}
-      />
-      {/* </ScrollWrapper> */}
+      <ScrollWrapper
+        scrollRef={scrollRef}
+        maxHeight={getHeight()}
+        scrollHandler={scrollHandler}
+      >
+        <div
+          className={`${
+            searchValue ? style['sidebar-menu'] : style['sidebar-category-menu']
+          } ${searchValue ? style.result : ''}`}
+        />
+      </ScrollWrapper>
     </div>
   );
 };

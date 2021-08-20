@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import style from '../../style.module.scss';
 import SearchInput from './SearchInput';
 
@@ -12,17 +13,15 @@ const HeaderSidebar: React.FC<THeaderSidebarProps> = ({
   goBack,
   onChangeSearch,
   clearSearch,
-  value,
+  // value,
 }) => {
+  const [value, setValue] = useState('');
   // const count = useSelector(getMarkersCount);
   // const searchCount = useSelector(getSearchCount);
   return (
     <div className={style['sidebar-header']}>
       <div className={style.header_title}>
-        <h4>
-          {`Достопримечательности `}
-          <span>{1}</span>
-        </h4>
+        <h4>Узнай больше легенд</h4>
         <button className={style.header_button} type="button">
           <svg className={`${style.icon} ${style['icon-attention']}`}>
             <use href="/sprite.svg#arrow-left" />
@@ -31,7 +30,7 @@ const HeaderSidebar: React.FC<THeaderSidebarProps> = ({
       </div>
       <SearchInput
         title="Найти легенду"
-        onChangeSearch={onChangeSearch}
+        onChangeSearch={(evt) => setValue(evt)}
         clearSearch={clearSearch}
         value={value}
       />
