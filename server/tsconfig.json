@@ -11,9 +11,9 @@
     "esModuleInterop": true,
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
-    "typeRoots": ["./node_modules/@types", "./../../types/node_modules/@types"],
+    "typeRoots": ["./node_modules/@types"],
     "types": ["node", "jest"]
   },
-  "include": [".",],
+  "include": ["."],
   "exclude": ["./node_modules", "./build"]
 }

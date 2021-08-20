@@ -79,3 +79,8 @@ export enum uiType {
   superuser = 'superUser',
   contentManager = 'contentManager',
 }
+
+export enum mapName {
+  itCompany = 'itCompany',
+  additionalEducation = 'additionalEducation',
+}

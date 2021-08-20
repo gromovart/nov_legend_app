@@ -4,21 +4,21 @@ import AuthControllers from '../../controllers/Auth';
 export default [
   {
     method: 'POST',
-    path: '/sign-in',
+    path: '/sign-up',
     options: {
       validate: {
         payload: <any>Joi.object().keys({
-          firstName: Joi.string().required(),
-          lastName: Joi.string().required(),
-          login: Joi.string().required(),
-          password: Joi.string().required(),
-          age: Joi.number().required(),
+          firstName: Joi.string().example('Иван').required(),
+          lastName: Joi.string().example('Иванов').required(),
+          login: Joi.string().example('ivan@mail.ru').required(),
+          password: Joi.string().example('ivan').required(),
+          age: Joi.number().example(30).required(),
           avatar: Joi.string().required(),
         }),
       },
       handler: AuthControllers.signUpUser,
-      description: 'Array properties',
-      tags: ['api', 'petstore'],
+      description: 'Регистрация пользователя',
+      tags: ['api', 'auth'],
       plugins: {
         'hapi-swagger': {
           order: 2,
@@ -36,17 +36,17 @@ export default [
   },
   {
     method: 'POST',
-    path: '/sign-up',
+    path: '/sign-in',
     options: {
       validate: {
         payload: <any>Joi.object().keys({
-          login: Joi.string().required(),
-          password: Joi.string().required(),
+          login: Joi.string().example('ivan@mail.ru').required(),
+          password: Joi.string().example('ivan').required(),
         }),
       },
-      handler: AuthControllers.signUpUser,
-      description: 'Array properties',
-      tags: ['api', 'petstore'],
+      handler: AuthControllers.signIn,
+      description: 'Авторизация пользователя',
+      tags: ['api', 'auth'],
       plugins: {
         'hapi-swagger': {
           order: 2,
