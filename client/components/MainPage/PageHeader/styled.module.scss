@@ -1,3 +1,5 @@
+@import '../../../assets/scss/helpers/variables';
+
 .page__header_wrapper {
   display: flex;
   background-color: #f4f6ff;
@@ -16,18 +18,33 @@
   align-items: flex-start;
   height: 700px;
   width: 100%;
-
-  &__icon {
+  &__player {
+    button {
+      border: none;
+      background: inherit;
+    }
+    display: flex;
+    align-items: center;
     svg {
-      cursor: pointer;
       height: 25px;
       width: 25px;
     }
   }
+  &__icon {
+    margin-top: 10px;
+    svg {
+      height: 25px;
+      width: 25px;
+    }
+  }
+  &__btn {
+    border: none;
+    background: inherit;
+  }
 }
 
 .description__title {
-  font-family: Inter;
+  font-family: $ff-title;
   font-style: normal;
   font-weight: bold;
   font-size: 16px;
@@ -38,7 +55,7 @@
 }
 
 .page__header_title {
-  font-family: Inter;
+  font-family: $ff-title;
   font-style: normal;
   font-weight: bold;
   font-size: 60px;
@@ -48,10 +65,10 @@
 }
 
 .header__description {
-  font-family: Inter;
+  font-family: $ff;
   font-style: normal;
   font-weight: normal;
-  font-size: 16px;
+  font-size: 22px;
   line-height: 26px;
 
   color: #666666;
