@@ -1,21 +1,18 @@
-type SignUpUserInterface = {
+type SignInUserInterface = {
   payload: {
-    firstName: string;
-    lastName: string;
-    middleName: string;
     login: string;
     password: string;
   };
   relations?: {};
 };
 export default class Service {
-  public static readonly nameService = 'signUp';
+  public static readonly nameService = 'SignIn';
 
-  public signUpUser = async (
+  public signIn = async (
     params: any,
     requestMeta: any = {}
   ): Promise<Object | Error> => {
-    console.log('signUpUser');
+    console.log('SignIn');
     return {};
   };
 }

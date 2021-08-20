@@ -10,6 +10,7 @@ import {
   Unique,
 } from 'typeorm';
 import Profile from './Profile';
+import * as Dictionary from '../../utils/Dictionary';
 
 @Entity('contact')
 @Unique(['value', 'profile'])
