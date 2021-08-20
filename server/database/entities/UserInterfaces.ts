@@ -6,7 +6,7 @@ import {
   UpdateDateColumn,
   OneToMany,
 } from 'typeorm';
-import * as Dictionary from '../../../../types/auth-service/Dictionary';
+import * as Dictionary from '../../utils/Dictionary';
 import UserRoleInterface from './UserRoleInterface';
 
 @Entity({ name: 'user_interfaces' })
