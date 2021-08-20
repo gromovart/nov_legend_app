@@ -4,7 +4,7 @@ import style from './styled.module.scss';
 const PageHeader = () => {
   return (
     <div className={`${style.page__header_wrapper}`}>
-      <div className={`${style.container} ${style.content__header}`}>
+      <div className={`container ${style.content__header}`}>
         <div className={style.description__title}>Journeys of Inspiration</div>
         <div className={style.page__header_title}>
           Start Your Journey <br /> for Enjoy Life.
