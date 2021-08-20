@@ -26,7 +26,6 @@
       "VOLUME_PATH_SERVER": "server",
       "VOLUME_PATH_UI": "client",
       "DB_NAME": "nov_legend_app"
-
     },
     "commitizen": {
       "path": "node_modules/cz-customizable"
