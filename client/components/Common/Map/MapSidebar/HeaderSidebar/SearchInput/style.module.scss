@@ -1,0 +1,129 @@
+@use "sass:math";
+
+@import 'assets/scss/helpers/media';
+@import 'assets/scss/helpers/variables';
+
+.inputbox {
+  display: flex;
+  flex-direction: column-reverse;
+  position: relative;
+
+  &.has-padding {
+    padding-top: 18px;
+    @include media(tablet) {
+      margin-bottom: 16px;
+    }
+    .inputbox__label {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .inputbox__input {
+      padding-top: 0px;
+    }
+  }
+  &__label {
+    display: block;
+    position: absolute;
+    padding-left: 4px;
+    left: 0;
+    bottom: 4px;
+    order: 1;
+    transition: all 0.25s ease;
+  }
+  &__input {
+    appearance: none;
+    box-sizing: border-box;
+    height: 56px;
+    padding: 24px 16px 8px;
+    padding-right: 40px;
+    opacity: 0.2;
+    border: 1px solid #342b2b;
+
+    font-size: 16px;
+
+    font-weight: 300;
+    color: rgba(52, 43, 43, 1);
+    order: 1;
+    position: relative;
+    background-color: transparent;
+    &:hover {
+      border: 1px solid #1e3daf;
+      opacity: 1;
+    }
+    &:focus {
+      outline: none;
+      border: 1px solid #1e3daf;
+      opacity: 1;
+      color: rgba(52, 43, 43, 1);
+      & ~ label {
+        padding: 8px 16px 32px;
+        color: $blue;
+        font-size: 12px;
+      }
+    }
+    &.not-empty {
+      opacity: 1;
+      border: 1px solid rgba(52, 43, 43, 0.2);
+      & ~ label {
+        padding: 8px 16px 32px;
+        font-size: 12px;
+      }
+      & ~ input {
+        opacity: 1;
+        color: red;
+      }
+    }
+  }
+}
+
+.textarea {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  &__label {
+    display: block;
+    position: absolute;
+    pointer-events: none;
+    padding: 16px;
+    transition: all 0.25s ease;
+    display: block;
+    font-size: 16px;
+    align-items: center;
+    color: #342b2b;
+    opacity: 0.6;
+    @include media(smartphone) {
+      padding-right: 4px;
+      // bottom: 4px;
+      font-size: 14px;
+    }
+    &.not-empty {
+      // opacity: 1;
+      padding: 8px 16px 32px;
+      font-size: 12px;
+    }
+  }
+}
+
+.close-button {
+  position: absolute;
+  right: 5%;
+  bottom: 35%;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+.icon {
+  display: inline-block;
+  vertical-align: middle;
+  width: 1em;
+  height: 1em;
+  fill: $grey-light;
+}
+
+.icon-cross {
+  font-size: math.div(12, 8) * 1rem;
+  width: (1 * 1em);
+  opacity: 50%;
+}
