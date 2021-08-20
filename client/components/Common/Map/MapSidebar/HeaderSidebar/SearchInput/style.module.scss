@@ -40,7 +40,6 @@
   &__input {
     appearance: none;
     box-sizing: border-box;
-    height: 56px;
     padding: 24px 16px 8px;
     padding-right: 40px;
     opacity: 0.2;
@@ -53,7 +52,7 @@
     order: 1;
     position: relative;
     background-color: transparent;
-
+    border-radius: 8px;
     &:hover {
       border: 1px solid #1e3daf;
       opacity: 1;

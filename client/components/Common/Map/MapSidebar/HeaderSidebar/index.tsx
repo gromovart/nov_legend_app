@@ -19,22 +19,36 @@ const HeaderSidebar: React.FC<THeaderSidebarProps> = ({
   // const count = useSelector(getMarkersCount);
   // const searchCount = useSelector(getSearchCount);
   return (
-    <div className={style['sidebar-header']}>
-      <div className={style.header_title}>
-        <h4>Узнай больше легенд</h4>
-        <button className={style.header_button} type="button">
-          <svg className={`${style.icon} ${style['icon-attention']}`}>
-            <use href="/sprite.svg#arrow-left" />
-          </svg>
-        </button>
+    // <div className={style['sidebar-header']}>
+    //   <div className={style.header_title}>
+    //     <h4>
+    //       {`Достопримечательности `}
+    //       <span>{1}</span>
+    //     </h4>
+    //     <button className={style.header_button} type="button">
+    //       <svg className={`${style.icon} ${style['icon-attention']}`}>
+    //         <use href="/sprite.svg#arrow-left" />
+    //       </svg>
+    //     </button>
+    //   </div>
+    //   <SearchInput
+    //     title="Найти легенду"
+    //     onChangeSearch={onChangeSearch}
+    //     clearSearch={clearSearch}
+    //     value={value}
+    //   />
+    // </div>
+    <>
+      <div className={style.sidebar__header}>
+        <div className={style.header__title}>Достопримечательности</div>
+        <SearchInput
+          title="Найти легенду"
+          onChangeSearch={onChangeSearch}
+          clearSearch={clearSearch}
+          value={value}
+        />
       </div>
-      <SearchInput
-        title="Найти легенду"
-        onChangeSearch={(evt) => setValue(evt)}
-        clearSearch={clearSearch}
-        value={value}
-      />
-    </div>
+    </>
   );
 };
 
