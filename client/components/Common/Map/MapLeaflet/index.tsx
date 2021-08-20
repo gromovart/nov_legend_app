@@ -2,10 +2,18 @@ import { MapContainer, TileLayer, useMapEvent } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import { FC, useState } from 'react';
 
-import Markers from './VenueMarkers';
+import Markers from './CustomMarker';
 
 const MapDynamicView: FC<any> = ({
-  markersData,
+  markersData = [
+    {
+      id: 1,
+      title: 'title',
+      description: 'description',
+      lat: 56.3287,
+      long: 44.002,
+    },
+  ],
   initData,
   onMapClickHandler,
   moveMapHandler,
@@ -27,15 +35,16 @@ const MapDynamicView: FC<any> = ({
       style={{ width: '100%', height: '100%', zIndex: 0 }}
       center={{ lat: 56.3287, lng: 44.002 }}
       whenCreated={setMap}
-      // zoomControl={windowWidth > 750}
       zoom={10}
-      // minZoom={4}
     >
       {/* <MyComponent /> */}
       <TileLayer
         url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager_labels_under/{z}/{x}/{y}.png"
-        attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        attribution='&copy; <a href="https://carto.com/">Carto</a> contributors'
       />
+      {markersData?.map((marker: any) => (
+        <Markers key={marker.title} marker={marker} Popup={MarkerPopup} />
+      ))}
     </MapContainer>
   );
 };

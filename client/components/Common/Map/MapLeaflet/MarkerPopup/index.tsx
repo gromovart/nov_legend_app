@@ -1,14 +1,15 @@
 import React from 'react';
 import { Popup } from 'react-leaflet';
 
-const MarkerPopup = (props: any) => {
-  const { data, CustomPopup } = props;
-  const category = data.mapCategories
-    .map((elem: any) => elem.title)
-    .join(' | ');
+const MarkerPopup = ({ data }: any) => {
   return (
     <Popup autoPan={false} className="marker_popup">
-      <CustomPopup {...data} category={category} />
+      <div>
+        <span>{data.title}</span>
+      </div>
+      <div>
+        <span>{data.description}</span>
+      </div>
     </Popup>
   );
 };
