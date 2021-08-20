@@ -97,6 +97,5 @@ export default class Service {
         },
       },
     };
-    return {};
   };
 }

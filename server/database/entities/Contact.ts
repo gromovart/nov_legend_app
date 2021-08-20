@@ -5,8 +5,6 @@ import {
   ManyToOne,
   CreateDateColumn,
   UpdateDateColumn,
-  ManyToMany,
-  JoinTable,
   Unique,
 } from 'typeorm';
 import Profile from './Profile';
