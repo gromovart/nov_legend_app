@@ -5,26 +5,23 @@ const Header = () => {
   return (
     <div className={`container ${style.header__wrapper}`}>
       <div className={style.header__logo}>
-        <span className={style.logo_title}>Travelix</span> Pro
+        <span className={style.logo_title}>NOV</span>.Legend
       </div>
       <div className={style.header__menu_items}>
         <a href="/" className={style.item}>
-          Tours
+          Карта фольклора
         </a>
         <a href="/" className={style.item}>
-          Services
+          Галерея
         </a>
         <a href="/" className={style.item}>
-          Package
+          О нас
         </a>
         <a href="/" className={style.item}>
-          About Us
-        </a>
-        <a href="/" className={style.item}>
-          Sign In
+          Регистрация
         </a>
         <button className={style.btn__sign_up} type="button">
-          Sign Up
+          Войти
         </button>
       </div>
     </div>

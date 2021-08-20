@@ -2,17 +2,27 @@
   display: flex;
   background-color: #f4f6ff;
   min-height: 100vh;
-  background: url('/Group262.png');
+  background: url('/sadco.jpg');
   background-position: right top;
   background-repeat: no-repeat;
 }
 
 .content__header {
   display: flex;
-  justify-content: flex-end;
+  padding-top: 120px;
+  justify-content: space-between;
   flex-direction: column;
+  align-items: flex-start;
   height: 700px;
   width: 100%;
+
+  &__icon {
+    svg {
+      cursor: pointer;
+      height: 25px;
+      width: 25px;
+    }
+  }
 }
 
 .description__title {
