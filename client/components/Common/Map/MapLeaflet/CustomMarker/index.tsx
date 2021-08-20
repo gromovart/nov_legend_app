@@ -1,6 +1,9 @@
+import React from 'react';
 import { Marker } from 'react-leaflet';
+import MarkerPopup from '../MarkerPopup';
+import MarkerIcon from './MarkerIcon';
 
-const VenueMarkers: React.FC<any> = ({ venue, currentMarker, Popup }) => {
+const VenueMarkers: React.FC<any> = ({ marker, currentMarker }) => {
   const windowWidth = window.screen.width;
   const mouseOverHandler = (e: any) => {
     e.target.openPopup();
@@ -9,14 +12,12 @@ const VenueMarkers: React.FC<any> = ({ venue, currentMarker, Popup }) => {
     e.target.closePopup();
   };
   const coordinate = {
-    lat: venue.lat,
-    lng: venue.long,
+    lat: marker.lat,
+    lng: marker.long,
   };
-  // const clickHandler = (e: any) => {
-  //   if (windowWidth > 1024) e.target.openPopup();
-  //   dispatch(setCurrentMarker(e.target.options?.children?.props?.data?.id));
-  //   dispatch(setCurrentData(e.target?.options?.children?.props?.data));
-  // };
+  const clickHandler = (e: any) => {
+    if (windowWidth > 1024) e.target.openPopup();
+  };
 
   return (
     <>
@@ -24,14 +25,15 @@ const VenueMarkers: React.FC<any> = ({ venue, currentMarker, Popup }) => {
         position={coordinate}
         riseOnHover
         bubblingMouseEvents={false}
-        zIndexOffset={currentMarker === venue.id ? 50 : 0}
+        zIndexOffset={currentMarker === marker.id ? 50 : 0}
+        icon={MarkerIcon}
         eventHandlers={{
-          // click: clickHandler,
+          click: clickHandler,
           mouseout: mouseOutHandler,
           mouseover: mouseOverHandler,
         }}
       >
-        {/* <MarkerPopup data={venue} CustomPopup={Popup} /> */}
+        <MarkerPopup data={marker} />
       </Marker>
     </>
   );
