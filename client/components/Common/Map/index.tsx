@@ -1,6 +1,7 @@
-import React, { FC } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import dynamic from 'next/dynamic';
 import style from './style.module.scss';
+import Icon from './Icon';
 
 type TProps = {
   goBack: () => void;
