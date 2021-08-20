@@ -1,5 +1,5 @@
 import React from 'react';
-import Header from '../common/Header';
+import Header from '../Common/Header';
 import PageHeader from './PageHeader';
 // import style from './styled.module.scss';
 
