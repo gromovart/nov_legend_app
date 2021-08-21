@@ -78,7 +78,18 @@ const PageHeader = () => {
             народных сказаний Новгородской области иллюстрированной детьми
           </div>
         </div>
-        <Button> КНОПКА ВНИЗ </Button>
+        <button
+          type="button"
+          className={style.btn__scroll}
+          onClick={() => {
+            window.scroll({
+              top: 1100,
+              behavior: 'smooth',
+            });
+          }}
+        >
+          К интерактивной карте
+        </button>
       </div>
     </div>
   );

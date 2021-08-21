@@ -1,0 +1,12 @@
+{
+  "data": [
+    { "title": "Легенды", "innerName": "Легенды" },
+    { "title": "Предания", "innerName": "Предания" },
+    { "title": "Сказки", "innerName": "Сказки" },
+    { "title": "Былички", "innerName": "Былички" },
+    { "title": "Озёра", "innerName": "Озёра" },
+    { "title": "Источники", "innerName": "Источники" },
+    { "title": "Камни", "innerName": "Камни" },
+    { "title": "Другое", "innerName": "Другое" }
+  ]
+}
