@@ -11,7 +11,7 @@ export default class Service {
     const responseCondition = app.connection
       .getRepository(MapCategory)
       .createQueryBuilder('mapCategory')
-      .addOrderBy('mapCategory.title', 'ASC');
+      .addOrderBy('mapCategory.id', 'ASC');
 
     const response = await responseCondition.getMany();
 

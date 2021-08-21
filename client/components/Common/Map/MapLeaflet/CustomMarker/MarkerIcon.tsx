@@ -201,3 +201,46 @@ export const greenIcon = L.icon({
   shadowAnchor: [4, 62], // the same for the shadow
   popupAnchor: [-3, -76], // point from which the popup should open relative to the iconAnchor
 });
+
+export const getIcon: (
+  type:
+    | 'Легенды'
+    | 'Предания'
+    | 'Сказки'
+    | 'Былички'
+    | 'Озёра'
+    | 'Источники'
+    | 'Камни'
+    | 'Другое'
+) => any = (type) => {
+  let currentPath = '';
+  if (type === 'Легенды') currentPath = '/svg/022-witch.png';
+  if (type === 'Предания') currentPath = '/svg/005-knight.png';
+  if (type === 'Сказки') currentPath = '/svg/018-princess-3.png';
+  if (type === 'Былички') currentPath = '/svg/024-fairy-2.png';
+  if (type === 'Озёра') currentPath = '/svg/021-mermaid.png';
+  if (type === 'Источники') currentPath = '/svg/030-fairy-tale.png';
+  if (type === 'Камни') currentPath = '/svg/031-centaur.png';
+  if (type === 'Другое') currentPath = '/svg/010-king-2.png';
+
+  return {
+    icon: L.icon({
+      iconUrl: currentPath,
+
+      iconSize: [40, 40], // size of the icon
+      iconAnchor: [22, 94], // point of the icon which will correspond to marker's location
+      shadowAnchor: [4, 62], // the same for the shadow
+      popupAnchor: [-3, -76], // point from which the popup should open relative to the iconAnchor
+    }),
+    path: currentPath,
+  };
+};
+
+export const newCustomIcon = L.icon({
+  iconUrl: '/svg/001-king.png',
+
+  iconSize: [35, 35], // size of the icon
+  iconAnchor: [22, 94], // point of the icon which will correspond to marker's location
+  shadowAnchor: [4, 62], // the same for the shadow
+  popupAnchor: [-3, -76], // point from which the popup should open relative to the iconAnchor
+});

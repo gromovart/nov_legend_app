@@ -1,6 +1,8 @@
 import { SoundOutlined } from '@ant-design/icons/lib/icons';
 import React from 'react';
 import { useDispatch } from 'react-redux';
+import Image from 'next/image';
+import { getIcon } from '../../../../MapLeaflet/CustomMarker/MarkerIcon';
 import style from './style.module.scss';
 import { setCurrentMarkerAction } from '../../../../../../../store/MapData/actions';
 
@@ -24,7 +26,14 @@ const ActualMenuItem = ({ title, year, percent, audio: newAudio, data }) => {
       className={style.card__wrapper}
       onClick={() => dispatch(setCurrentMarkerAction(data))}
     >
-      <div className={style.card__title}>{title}</div>
+      <div className={style.title__wrapper}>
+        <Image
+          width={50}
+          height={50}
+          src={getIcon(data?.mapCategories?.[0]?.title)?.path}
+        />
+        <div className={style.card__title}>{title}</div>
+      </div>
       <div className={style.card__description}>{year}</div>
       <div className={style.card__description}>Популярность:</div>
       <div className={style.popular__line}>
