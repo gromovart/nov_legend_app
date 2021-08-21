@@ -32,7 +32,16 @@ export default class MapMarker {
   name: string;
 
   @Column({ type: 'varchar', nullable: true })
+  shortDescription: string;
+
+  @Column({ type: 'varchar', nullable: true })
   description: string;
+
+  @Column({ type: 'varchar', nullable: true })
+  documents: string;
+
+  @Column({ type: 'varchar', nullable: true })
+  informants: string;
 
   @Column({ type: 'varchar', nullable: true })
   houseNumber: string;

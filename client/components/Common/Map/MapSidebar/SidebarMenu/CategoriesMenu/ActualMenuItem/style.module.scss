@@ -1,4 +1,7 @@
+@import 'assets/scss/helpers/variables';
+
 .card__wrapper {
+  position: relative;
   padding: 21px 21px;
   border-radius: 8px;
   background: #ffffff;
@@ -21,7 +24,7 @@
   line-height: 26px;
 }
 
-.card__year {
+.card__description {
   font-family: Inter;
   font-style: normal;
   font-weight: normal;
@@ -33,6 +36,40 @@
 .popular__line {
   height: 4px;
   width: 100%;
-  background-color: #fff;
+  background-color: #F7F7F8;
   border-radius: 8px;
+  position: relative;
+}
+
+.line__orange {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  border-radius: 8px;
+  width: 0;
+  background-color: $red;
+  transition: all 1s ease;
+}
+
+.btn__audio {
+  cursor: pointer;
+  position: absolute;
+  right: 11px;
+  top: 15px;
+  padding: 10px;
+
+  border: none;
+  outline: none;
+  background: transparent;
+
+  &:hover {
+    border-radius: 8px;
+    background: lighten($grey-light, 10%);
+  }
+
+  &:active {
+    background: $grey-light;
+  }
 }

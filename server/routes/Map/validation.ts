@@ -117,16 +117,13 @@ export const findMapMarkerQuery = Joi.object({
   .concat(mapName);
 
 export const getAllMapMarkerQuery = Joi.object({
-  lat1: Joi.number().required(),
-  lat2: Joi.number().required(),
-  long1: Joi.number().required(),
-  long2: Joi.number().required(),
-  zoomLevel: Joi.number().required().min(4).max(18),
+  lat1: Joi.number().optional(),
+  lat2: Joi.number().optional(),
+  long1: Joi.number().optional(),
+  long2: Joi.number().optional(),
+  zoomLevel: Joi.number().optional().min(4).max(18),
   mapCategoryId: Joi.number().optional().example([1]),
-  state: Joi.string().optional(),
-})
-  .concat(mapName)
-  .concat(findOptionalQuery);
+}).concat(findOptionalQuery);
 
 export const readMarkerParams = idParams;
 
