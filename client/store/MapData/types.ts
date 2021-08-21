@@ -4,7 +4,7 @@ export type TMarkersData = {
   long1?: number;
   long2?: number;
   zoomLevel?: number;
-  mapCategoryId: number;
+  mapCategoryId?: number;
 };
 
 export type TMapData = {

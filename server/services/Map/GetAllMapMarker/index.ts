@@ -21,13 +21,13 @@ export default class Service {
         'mapMarker.lat AS lat',
         'mapMarker.long AS long',
         'mapMarker.name AS name',
-        'mapMarker.images AS images',
         'mapMarker.audio AS audio',
         'mapMarker.video AS video',
         'mapMarker.shortDescription AS "shortDescription"',
         'mapMarker.description AS description',
         'mapMarker.documents AS documents',
         'mapMarker.informants AS informants',
+        `array_remove(string_to_array(mapMarker.images, ','),'null') AS images`,
         `array_remove(
           array_agg(
             jsonb_strip_nulls(

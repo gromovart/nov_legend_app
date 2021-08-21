@@ -31,7 +31,7 @@ const MapComponent: React.FC<TProps & any> = () => {
   const dispatch = useDispatch();
   const markersData = useSelector(getMarkersData);
   useEffect(() => {
-    dispatch(getMarkersAction({ mapCategoryId: 9 }));
+    dispatch(getMarkersAction({}));
   }, []);
   return (
     <div className={style.map_window}>
