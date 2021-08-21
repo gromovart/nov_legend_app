@@ -5,11 +5,11 @@ import ModalVideo from './ModalVideo';
 import ScrollWrapper from '../../../../../ScrollWrapper';
 import style from './style.module.scss';
 
-const ActualMenuItem = ({ title, year, percent }) => {
+const ActualMenuItem = ({ title, year, percent, audio: newAudio }) => {
   const [isPlayAudio, setIsPlayAudio] = React.useState(false);
   const [visible, setVisible] = React.useState(false);
 
-  const audio = React.useRef(new Audio('/gusli.mp3'));
+  const audio = React.useRef(new Audio(`/${newAudio}`));
 
   const setAudioPlay = () => {
     if (!isPlayAudio) audio.current.play();
@@ -33,41 +33,41 @@ const ActualMenuItem = ({ title, year, percent }) => {
       >
         <SoundOutlined />
       </button>
-      <ScrollWrapper>
-        <div className={style.image__wrapper}>
-          <Image
-            width={130}
-            src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
-          />
-          <Image
-            width={130}
-            src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
-          />
+      {/* <ScrollWrapper> */}
+      {/*  <div className={style.image__wrapper}> */}
+      {/*    <Image */}
+      {/*      width={130} */}
+      {/*      src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png" */}
+      {/*    /> */}
+      {/*    <Image */}
+      {/*      width={130} */}
+      {/*      src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png" */}
+      {/*    /> */}
 
-          <Image
-            width={130}
-            src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
-          />
-          <Image
-            width={130}
-            src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
-          />
-          <Image
-            width={130}
-            src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
-          />
-        </div>
-      </ScrollWrapper>
-      <button
-        className={style.btn__view_video}
-        type="button"
-        onClick={() => {
-          setVisible(true);
-        }}
-      >
-        Видео описание
-      </button>
-      <ModalVideo visible={visible} setVisible={setVisible} />
+      {/*    <Image */}
+      {/*      width={130} */}
+      {/*      src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png" */}
+      {/*    /> */}
+      {/*    <Image */}
+      {/*      width={130} */}
+      {/*      src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png" */}
+      {/*    /> */}
+      {/*    <Image */}
+      {/*      width={130} */}
+      {/*      src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png" */}
+      {/*    /> */}
+      {/*  </div> */}
+      {/* </ScrollWrapper> */}
+      {/* <button */}
+      {/*  className={style.btn__view_video} */}
+      {/*  type="button" */}
+      {/*  onClick={() => { */}
+      {/*    setVisible(true); */}
+      {/*  }} */}
+      {/* > */}
+      {/*  Видео описание */}
+      {/* </button> */}
+      {/* <ModalVideo visible={visible} setVisible={setVisible} /> */}
     </div>
   );
 };
