@@ -3,6 +3,7 @@ import style from '../style.module.scss';
 import HeaderSidebar from './HeaderSidebar';
 import SidebarMenu from './SidebarMenu';
 import ActualMenuItem from './SidebarMenu/CategoriesMenu/ActualMenuItem';
+import ScrollWrapper from '../../ScrollWrapper';
 
 type TProps = {
   goBack: () => void;
@@ -15,11 +16,12 @@ type TProps = {
   seeMoreHandler: (offset: number) => void;
 };
 
+const getRandom = (min, max) => Math.floor(Math.random() * (max - min) + min);
 const MapSidebar: React.FC<TProps & any> = ({
   goBack,
   sidebarClickHandler,
   searchValue,
-  markerData,
+  markersData,
   onChangeSearch,
   clearSearch,
   value,
@@ -33,17 +35,27 @@ const MapSidebar: React.FC<TProps & any> = ({
         onChangeSearch={onChangeSearch}
         value={value}
       />
-      <ActualMenuItem
-        title="Собор Софии Премудрости Божией"
-        percent="75%"
-        year="1998 г."
-      />
-      <SidebarMenu
-        sidebarClickHandler={sidebarClickHandler}
-        searchValue={searchValue}
-        markerData={markerData}
-        seeMoreHandler={seeMoreHandler}
-      />
+      <ScrollWrapper maxHeight={800}>
+        {markersData.map((item) => (
+          <ActualMenuItem
+            title={item.name}
+            percent={`${getRandom(10, 100)}%`}
+            year={`${getRandom(935, 1800)} г.`}
+          />
+        ))}
+      </ScrollWrapper>
+
+      {/* <ActualMenuItem */}
+      {/*  title="Собор Софии Премудрости Божией" */}
+      {/*  percent="75%" */}
+      {/*  year="1998 г." */}
+      {/* /> */}
+      {/* <SidebarMenu */}
+      {/*  sidebarClickHandler={sidebarClickHandler} */}
+      {/*  searchValue={searchValue} */}
+      {/*  markersData={markersData} */}
+      {/*  seeMoreHandler={seeMoreHandler} */}
+      {/* /> */}
     </div>
   );
 };

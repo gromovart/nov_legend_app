@@ -16,6 +16,7 @@ const getHeight = () => {
 let scroll = 0;
 
 const SidebarMenu = ({
+  markersData,
   sidebarClickHandler,
   data,
   searchValue,

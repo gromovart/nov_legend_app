@@ -38,7 +38,7 @@ const MapComponent: React.FC<TProps & any> = () => {
       <div className={`${style.map_container} ${style['marker-info']} `}>
         <NoSSRMapComponent markersData={markersData} />
       </div>
-      <NoSSRSidebar />
+      <NoSSRSidebar markersData={markersData} />
     </div>
   );
 };
