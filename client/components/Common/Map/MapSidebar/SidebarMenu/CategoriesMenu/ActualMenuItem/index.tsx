@@ -3,6 +3,17 @@ import React from 'react';
 import style from './style.module.scss';
 
 const ActualMenuItem = ({ title, year, percent }) => {
+  const [isPlayAudio, setIsPlayAudio] = React.useState(false);
+
+  const audio = React.useRef(new Audio('/gusli.mp3'));
+
+  const setAudioPlay = () => {
+    if (!isPlayAudio) audio.current.play();
+    if (isPlayAudio) audio.current.pause();
+
+    setIsPlayAudio((prev) => !prev);
+  };
+
   return (
     <div className={style.card__wrapper}>
       <div className={style.card__title}>{title}</div>
@@ -11,14 +22,7 @@ const ActualMenuItem = ({ title, year, percent }) => {
       <div className={style.popular__line}>
         <div className={style.line__orange} style={{ width: percent }} />
       </div>
-      <button
-        type="button"
-        className={style.btn__audio}
-        onClick={() => {
-          const audio = new Audio('/gusli.mp3');
-          audio.play();
-        }}
-      >
+      <button type="button" className={style.btn__audio} onClick={setAudioPlay}>
         <SoundOutlined />
       </button>
     </div>
