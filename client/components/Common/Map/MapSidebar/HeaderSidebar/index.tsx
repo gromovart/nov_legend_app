@@ -1,6 +1,9 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import ArrowLeftOutlined from '@ant-design/icons/lib/icons/ArrowLeftOutlined';
 import style from '../../style.module.scss';
 import SearchInput from './SearchInput';
+import { setCurrentMarkerAction } from '../../../../../store/MapData/actions';
 
 type THeaderSidebarProps = {
   goBack: () => void;
@@ -15,9 +18,13 @@ const HeaderSidebar: React.FC<THeaderSidebarProps> = ({
   clearSearch,
   // value,
 }) => {
+  const dispatch = useDispatch();
   const [value, setValue] = useState('');
   // const count = useSelector(getMarkersCount);
   // const searchCount = useSelector(getSearchCount);
+  const clickHandler = () => {
+    dispatch(setCurrentMarkerAction(null));
+  };
   return (
     // <div className={style['sidebar-header']}>
     //   <div className={style.header_title}>
@@ -40,7 +47,19 @@ const HeaderSidebar: React.FC<THeaderSidebarProps> = ({
     // </div>
     <>
       <div className={style.sidebar__header}>
-        <div className={style.header__title}>Достопримечательности</div>
+        <div
+          className={style.header_title}
+          style={{ display: 'flex', justifyContent: 'space-between' }}
+        >
+          <h4>Достопримечательности</h4>
+          <button
+            className={style.header_button}
+            type="button"
+            onClick={clickHandler}
+          >
+            <ArrowLeftOutlined />
+          </button>
+        </div>
         <SearchInput
           title="Найти легенду"
           onChangeSearch={onChangeSearch}

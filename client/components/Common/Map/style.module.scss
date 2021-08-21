@@ -71,6 +71,7 @@
     .header_title {
       display: flex;
       justify-content: space-between;
+      flex-direction: row;
 
       span {
         color: $grey-light;
@@ -410,6 +411,7 @@
 }
 
 .sidebar__header {
+
   border-radius: 10px;
   // background: #fafaff;
   //padding: 10px;
