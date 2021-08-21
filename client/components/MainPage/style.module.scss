@@ -1,0 +1,139 @@
+@import '../../assets/scss/helpers/variables';
+
+.dynamic_bg_med_first {
+  background: url('/med.jpg') no-repeat;
+  background-size: contain;
+  width: 100%;
+  height: 100%;
+  top: -50%;
+  left: -250px;
+  position: absolute;
+  z-index: 0;
+  opacity: 0.4;
+  display: block;
+  transform: rotate(-45deg);
+}
+
+.dynamic_bg_med_second {
+  background: url('/med.jpg') no-repeat;
+  background-size: contain;
+  width: 50%;
+  height: 100%;
+  top: 0;
+  right: -20%;
+  position: absolute;
+  z-index: 0;
+  opacity: 0.4;
+  display: block;
+  transform: rotate(30deg);
+}
+
+.dynamic_bg_fish_first {
+  background: url('/riba.jpg') no-repeat;
+  background-size: contain;
+  width: 100%;
+  height: 100%;
+  top: 1%;
+  left: -250px;
+  position: absolute;
+  z-index: 0;
+  opacity: 0.4;
+  display: block;
+}
+
+.dynamic_bg_fish_second {
+  background: url('/riba.jpg') no-repeat;
+  background-size: contain;
+  width: 50%;
+  height: 100%;
+  top: 0;
+  right: -10%;
+  position: absolute;
+  z-index: 0;
+  opacity: 0.4;
+  display: block;
+  transform: rotate(30deg);
+}
+
+.dynamic_bg_crocodil_first {
+  background: url('/crocodil.jpg') no-repeat;
+  background-size: contain;
+  width: 100%;
+  height: 100%;
+  top: -10%;
+  left: -1150px;
+  position: absolute;
+  z-index: 0;
+  opacity: 0.4;
+  display: block;
+  transform: scale(-1, 1);
+}
+
+.dynamic_bg_crocodil_second {
+  background: url('/crocodil.jpg') no-repeat;
+  background-size: contain;
+  width: 50%;
+  height: 100%;
+  top: 0;
+  right: -10%;
+  position: absolute;
+  z-index: 0;
+  opacity: 0.4;
+  display: block;
+  transform: rotate(30deg);
+}
+
+.dynamic_bg_beresta_first {
+  background: url('/beresta.jpg') no-repeat;
+  background-size: contain;
+  width: 100%;
+  height: 100%;
+  top: -5%;
+  left: -250px;
+  position: absolute;
+  z-index: 0;
+  opacity: 0.4;
+  display: block;
+}
+
+.dynamic_bg_beresta_second {
+  background: url('/beresta.jpg') no-repeat;
+  background-size: contain;
+  width: 50%;
+  height: 100%;
+  top: 0;
+  right: -10%;
+  position: absolute;
+  z-index: 0;
+  opacity: 0.4;
+  display: block;
+  transform: rotate(30deg);
+}
+
+.dynamic_bg_veto_first {
+  background: url('/veto.jpg') no-repeat;
+  background-size: contain;
+  width: 100%;
+  height: 100%;
+  top: -5%;
+  left: -200px;
+  position: absolute;
+  z-index: 0;
+  opacity: 0.4;
+  display: block;
+  // transform: scale(-1, 1);
+}
+
+.dynamic_bg_veto_second {
+  background: url('/petrushka.jpg') no-repeat;
+  background-size: contain;
+  width: 50%;
+  height: 100%;
+  top: -100px;
+  right: -10%;
+  position: absolute;
+  z-index: 0;
+  opacity: 0.4;
+  display: block;
+  transform: rotate(45deg);
+}
