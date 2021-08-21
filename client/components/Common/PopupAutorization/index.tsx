@@ -28,7 +28,7 @@ const PopupAuthorization = ({ modalVisible, setModal2Visible }) => {
       >
         <Form.Item
           label="Логин"
-          name=""
+          name="name"
           rules={[{ required: true, message: 'Пожалуйста, введите логин' }]}
         >
           <Input className={style.form__input} />
