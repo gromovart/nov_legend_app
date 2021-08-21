@@ -1,0 +1,15 @@
+.content_style {
+  height: calc(100vh - 106px);
+  display: flex;
+  justify-content: center;
+
+  img {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+.carousel__wrapper {
+  margin-top: 106px;
+  height: 100vh;
+}
