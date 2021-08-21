@@ -1,33 +1,107 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { Button, notification, Popover } from 'antd';
+import { PlayCircleOutlined, CloseCircleOutlined } from '@ant-design/icons';
 import Image from 'next/image';
-import image from './group28.png';
 import style from './styled.module.scss';
 
 const ChooseBlock = () => {
+  const [isPlayerVisible, setIsPlayerVisible] = React.useState<boolean>(false);
+
+  const openNotification = () => {
+    const key = `open${Date.now()}`;
+    const btn = (
+      <Button
+        type="primary"
+        size="small"
+        onClick={() => {
+          setIsPlayerVisible((prev) => !prev);
+          notification.close(key);
+        }}
+      >
+        Подтвердить
+      </Button>
+    );
+    notification.open({
+      message: 'Прослушайте музыкальное сопровождение',
+      description:
+        'Музыкальное сопровождение, поможет вам глубже погрузися в мир былин Новгорода',
+      btn,
+      key,
+      placement: 'topLeft',
+    });
+  };
+
   return (
     <div className="container">
       <div className={style.choose__block_wrapper}>
-        <Image src={image} alt="image" layout="fixed" />
+        <Image
+          src="/sofia.jpg"
+          alt="image"
+          layout="fixed"
+          height="650px"
+          width="650px"
+        />
         <div className={style.choose__content}>
-          <div className={style.choose__title}>Why Choose Us</div>
+          <div className={style.choose__title}>
+            {isPlayerVisible ? (
+              <div className={style.content__player}>
+                <audio controls>
+                  <source src="/church.mp3" type="audio/mpeg" />
+                </audio>
+                <Button
+                  onClick={() => {
+                    setIsPlayerVisible((prev) => !prev);
+                  }}
+                >
+                  <CloseCircleOutlined />
+                </Button>
+              </div>
+            ) : (
+              <Popover
+                content="Нажмите для воспроизведения музыкального сопровождения"
+                title=""
+                placement="bottomLeft"
+              >
+                <Button
+                  className={style.content__btn}
+                  onClick={() => {
+                    setIsPlayerVisible((prev) => !prev);
+                  }}
+                >
+                  <PlayCircleOutlined className={style.content__icon} />
+                  <span>Музыкальное сопровождение</span>
+                </Button>
+              </Popover>
+            )}
+          </div>
           <div className={style.choose__sub_title}>
-            We care for 100% customer satifiction
+            Все истории и сказания Новгорода в одном месте
           </div>
           <div className={style.choose__description}>
-            There was consensus, not surprisingly, that quality traditional
-            travel agencies provide value for money. However, this was
-            accompanied by a high level of concern that many consumers
+            С помошью портала
+            <span>
+              <span> NOV</span>.Legend
+            </span>
+            , вы почувсвуете атмосферу Новгорода в котором есть место для сказок
+            и былин. Услышьте древние сказания и легенды из первых уст и
+            почувсвуйте атмосферу древней Руси.
           </div>
           <div className={style.choose__lists_item}>
             <div className={style.right__choose}>
-              <div className={style.list__item}>Budget Friendly</div>
-              <div className={style.list__item}>Safety Management</div>
-              <div className={style.list__item}>Customise Pack</div>
+              <div className={style.list__item}>
+                Интерактивная карта фольклера
+              </div>
+              <div className={style.list__item}>
+                Исторические факты и древние сказания
+              </div>
             </div>
             <div className={style.left__choose}>
-              <div className={style.list__item}>Expert Team</div>
-              <div className={style.list__item}>Payment Flexibility</div>
-              <div className={style.list__item}>Friendly Unit</div>
+              <div className={style.list__item}>
+                Подбор индивидуального маршрута
+              </div>
+              <div className={style.list__item}>
+                Уникальное музыкальное сопровождение
+              </div>
             </div>
           </div>
           <button className={style.btn__choose_more} type="button">

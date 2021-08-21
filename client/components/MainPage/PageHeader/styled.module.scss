@@ -32,15 +32,20 @@
     }
   }
   &__icon {
-    margin-top: 10px;
     svg {
       height: 25px;
       width: 25px;
     }
   }
   &__btn {
+    padding: 0;
+    font-family: $ff;
+    font-size: 16px;
+    margin-top: 10px;
     border: none;
     background: inherit;
+    display: flex;
+    align-items: center;
   }
 }
 
