@@ -10,4 +10,5 @@ export type TMarkersData = {
 export type TMapData = {
   markersData: any[];
   currentMarker: any;
+  currentBackgroundImg: string;
 };
