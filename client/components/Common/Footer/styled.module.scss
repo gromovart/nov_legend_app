@@ -1,0 +1,75 @@
+@import '../../../assets/scss/helpers/variables';
+
+.footer__wrapper {
+  margin-top: 60px;
+  width: 100%;
+  height: 250px;
+  background: url('/nov_footer_2.jpg') no-repeat;
+  background-size: cover;
+}
+
+.footer__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.footer__layout {
+  padding: 30px 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(#fff, 0.9);
+}
+.footer__logo {
+  font-family: $ff-title;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 36px;
+  line-height: 52px;
+}
+
+.logo_title {
+  color: $red;
+}
+.footer__description {
+  font-family: $ff;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 52px;
+}
+.footer__header__driver {
+  margin: 0 50px;
+  height: 50px;
+  width: 2px;
+  background-color: $red;
+}
+.footer__driver {
+  background-color: $red;
+  height: 2px;
+}
+
+.footer__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  &_link {
+    font-family: $ff-title;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 52px;
+    a {
+      color: #000;
+    }
+  }
+  &_list {
+    display: flex;
+    align-content: center;
+    justify-content: space-between;
+    list-style: none;
+    width: 200px;
+    &_item {
+      color: $red;
+    }
+  }
+}
