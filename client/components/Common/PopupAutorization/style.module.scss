@@ -1,7 +1,61 @@
+@import 'assets/scss/helpers/variables';
 
 .modal__footer {
   display: flex;
   gap: 10px;
   justify-content: flex-end;
+  margin-top: 20px;
+}
 
+.btn__success {
+  border: none;
+  outline: none;
+  background-color: $red;
+  color: #fff;
+  border-radius: 10px;
+  padding: 5px 20px;
+  cursor: pointer;
+  font-family: $ff-title;
+  font-style: normal;
+  font-size: 18px;
+  line-height: 26px;
+
+  &:hover {
+    background-color: lighten($red, 10);
+  }
+
+  &:active {
+    background-color: $red;
+  }
+}
+
+.btn__cancel {
+  border: 2px solid $red;
+  color: $red;
+  outline: none;
+  background: transparent;
+  border-radius: 10px;
+  padding: 5px 20px;
+  cursor: pointer;
+  font-family: $ff-title;
+  font-style: normal;
+  font-size: 18px;
+  line-height: 26px;
+
+  &:hover {
+    background-color: lighten($red, 10);
+    color: #fff;
+  }
+
+  &:active {
+    background-color: $red;
+  }
+}
+
+.form__input {
+  border-radius: 8px;
+
+  &:hover {
+    border: 1px solid $red;
+  }
 }
