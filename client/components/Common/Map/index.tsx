@@ -1,7 +1,10 @@
 import React, { FC, useEffect, useState } from 'react';
 import dynamic from 'next/dynamic';
+import { useDispatch, useSelector } from 'react-redux';
 import style from './style.module.scss';
 import Icon from './Icon';
+import { getMarkersData } from '../../../store/MapData/selectors';
+import { getMarkersAction } from '../../../store/MapData/actions';
 
 type TProps = {
   goBack: () => void;
@@ -25,10 +28,15 @@ const NoSSRSidebar = dynamic(() => import('./MapSidebar'), {
 });
 
 const MapComponent: React.FC<TProps & any> = () => {
+  const dispatch = useDispatch();
+  const markersData = useSelector(getMarkersData);
+  useEffect(() => {
+    dispatch(getMarkersAction({ mapCategoryId: 9 }));
+  }, []);
   return (
     <div className={style.map_window}>
       <div className={`${style.map_container} ${style['marker-info']} `}>
-        <NoSSRMapComponent />
+        <NoSSRMapComponent markersData={markersData} />
       </div>
       <NoSSRSidebar />
     </div>

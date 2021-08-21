@@ -23,14 +23,14 @@ const VenueMarkers: React.FC<any> = ({ marker, currentMarker }) => {
     <>
       <Marker
         position={coordinate}
-        riseOnHover
+        // riseOnHover
         bubblingMouseEvents={false}
         zIndexOffset={currentMarker === marker.id ? 50 : 0}
         icon={MarkerIcon}
         eventHandlers={{
           click: clickHandler,
-          mouseout: mouseOutHandler,
-          mouseover: mouseOverHandler,
+          // mouseout: mouseOutHandler,
+          // mouseover: mouseOverHandler,
         }}
       >
         <MarkerPopup data={marker} />

@@ -10,6 +10,17 @@ body {
   margin: 0 auto;
 }
 
-.leaflet-map-pane svg {
-  transform: rotate(180deg);
+//.leaflet-map-pane svg {
+//  transform: rotate(180deg);
+//}
+
+.leaflet-popup-content-wrapper {
+
+  background: url("/old_paper.png") !important;
+  color: rgba(0, 0, 0, 0.7) !important;
+  border-radius: 8px !important;
+}
+
+.leaflet-popup-tip {
+  background: url("/old_paper.png") !important;
 }
