@@ -134,13 +134,24 @@ const MapDynamicView = ({
           url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager_labels_under/{z}/{x}/{y}.png"
           attribution='&copy; <a href="https://carto.com/">Carto</a> contributors'
         />
-        {markersData?.map((marker: any) => (
-          <Markers
-            key={marker.title}
-            marker={marker}
-            createNewRouteHandler={createNewRouteHandler}
-          />
-        ))}
+        {showCreateRoute &&
+          selectedMarkers &&
+          selectedMarkers?.length !== 0 &&
+          selectedMarkers?.map((marker: any) => (
+            <Markers
+              key={marker.title}
+              marker={marker}
+              createNewRouteHandler={createNewRouteHandler}
+            />
+          ))}
+        {!showCreateRoute &&
+          markersData?.map((marker: any) => (
+            <Markers
+              key={marker.title}
+              marker={marker}
+              createNewRouteHandler={createNewRouteHandler}
+            />
+          ))}
         {showCreateRoute && <RoutingMachine />}
       </MapContainer>
     </>
