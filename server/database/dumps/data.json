@@ -363,7 +363,7 @@
           "informants": "",
           "images": ["ilmen_1.png", "ilmen_2.jpg", "ilmen_3.jpeg"],
           "audio": "ilmen.mp3",
-          "video": "https://www.youtube.com/watch?v=rmU7VPAhfVo"
+          "video": "https://www.youtube.com/embed/rmU7VPAhfVo"
         },
         {
           "lat": 56.6675,
@@ -503,7 +503,7 @@
           "informants": "",
           "images": ["perin_1.png", "perin_2.jpg", "perin_3.jpeg"],
           "audio": "perin.mp3",
-          "video": "https://www.youtube.com/watch?v=2i5WSboV5vI"
+          "video": "https://www.youtube.com/embed/2i5WSboV5vI"
         }
       ]
     },
