@@ -2,7 +2,7 @@ import React from 'react';
 import { Marker } from 'react-leaflet';
 import { useDispatch } from 'react-redux';
 import MarkerPopup from '../MarkerPopup';
-import MarkerIcon from './MarkerIcon';
+import { getIcon } from './MarkerIcon';
 import { setCurrentMarkerAction } from '../../../../../store/MapData/actions';
 
 const VenueMarkers: React.FC<any> = ({ marker, currentMarker }) => {
@@ -21,7 +21,7 @@ const VenueMarkers: React.FC<any> = ({ marker, currentMarker }) => {
     e.target.openPopup();
     dispatch(setCurrentMarkerAction(marker));
   };
-
+  getIcon(marker?.mapCategories?.[0]?.title);
   return (
     <>
       <Marker
@@ -30,7 +30,7 @@ const VenueMarkers: React.FC<any> = ({ marker, currentMarker }) => {
         interactive
         bubblingMouseEvents={false}
         zIndexOffset={currentMarker === marker.id ? 50 : 0}
-        icon={MarkerIcon}
+        icon={getIcon(marker?.mapCategories?.[0]?.title)?.icon}
         eventHandlers={{
           click: clickHandler,
           mouseout: mouseOutHandler,
