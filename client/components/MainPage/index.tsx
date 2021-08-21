@@ -18,8 +18,12 @@ const MainPage = () => {
       </div>
       <PageHeader />
       <ChooseBlock />
-      <div className="container">
-        <MapComponent />
+      <div className="map__container_wrapper">
+        <div className="opacity_container">
+          <div className="container">
+            <MapComponent />
+          </div>
+        </div>
       </div>
       <Footer />
     </>
