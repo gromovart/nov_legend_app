@@ -33,7 +33,11 @@ const MapSidebar: React.FC<TProps & any> = ({
         onChangeSearch={onChangeSearch}
         value={value}
       />
-      <ActualMenuItem />
+      <ActualMenuItem
+        title="Собор Софии Премудрости Божией"
+        percent="75%"
+        year="1998 г."
+      />
       <SidebarMenu
         sidebarClickHandler={sidebarClickHandler}
         searchValue={searchValue}
