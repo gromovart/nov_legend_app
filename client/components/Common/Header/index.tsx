@@ -1,11 +1,13 @@
+import { LogoutOutlined } from '@ant-design/icons';
 import React from 'react';
 import PopupAuthorization from '../PopupAutorization';
 import style from './styled.module.scss';
 
 const Header = () => {
   const [modalVisible, setModal2Visible] = React.useState(false);
-  const [userData, setUserData] = React.useState(null);
-
+  const [userData, setUserData] = React.useState(
+    JSON.parse(localStorage.getItem('userData'))
+  );
   return (
     <div className={`container ${style.header__wrapper}`}>
       <div className={style.header__logo}>
@@ -38,9 +40,21 @@ const Header = () => {
             </button>
           </>
         ) : (
-          <div className={style.user__name}>{`${
-            userData?.lastName
-          } ${userData?.firstName?.slice(0, 1)}.`}</div>
+          <div className={style.user__login}>
+            <div className={style.user__name}>{`${
+              userData?.lastName
+            } ${userData?.firstName?.slice(0, 1)}.`}</div>
+            <button
+              type="button"
+              onClick={() => {
+                setUserData(null);
+                localStorage.removeItem('userData');
+              }}
+              className={style.btn__logout}
+            >
+              <LogoutOutlined />
+            </button>
+          </div>
         )}
         <PopupAuthorization
           modalVisible={modalVisible}

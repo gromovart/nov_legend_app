@@ -1,7 +1,11 @@
 import React from 'react';
-import Header from '../Common/Header';
+import dynamic from 'next/dynamic';
 import ChooseBlock from './ChooseBlock';
 import PageHeader from './PageHeader';
+
+const Header = dynamic(() => import('../Common/Header'), {
+  ssr: false,
+});
 // import style from './styled.module.scss';
 
 const MainPage = () => {
