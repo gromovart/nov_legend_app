@@ -5,6 +5,7 @@
   background-position: left top;
   background-repeat: no-repeat;
   min-height: 90vh;
+  box-shadow: inset 0px 0px 40px 40px #ffffff;
 }
 .choose__title {
   margin-bottom: 14px;
@@ -18,10 +19,11 @@
   align-items: flex-end;
   height: 700px;
   width: 100%;
+  
 }
 
 .choose__content {
-  max-width: 450px;
+  max-width: 550px;
 }
 
 .choose__sub_title {

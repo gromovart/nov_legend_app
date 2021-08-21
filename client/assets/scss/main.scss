@@ -7,7 +7,7 @@ body {
 }
 
 .container {
-  max-width: 1170px;
+  max-width: 1470px;
   margin: 0 auto;
 }
 
@@ -36,4 +36,30 @@ body {
   font-style: normal;
   font-weight: bold;
   font-size: 22px !important;
+}
+
+.leaflet-popup {
+  width: 70px;
+  height: 70px;
+  border-radius: 190px;
+}
+.leaflet-popup-content-wrapper {
+  width: 100% !important;
+  height: 100% !important;
+  padding: 0;
+  margin: 0;
+  border-radius: 90px !important;
+}
+.leaflet-popup-content {
+  width: 100% !important;
+  height: 100% !important;
+  padding: 5px;
+  margin: 0 !important;
+  border-radius: 90px !important;
+}
+.leaflet-popup-tip-container {
+  top: 68px;
+}
+.leaflet-popup-close-button {
+  display: none;
 }
