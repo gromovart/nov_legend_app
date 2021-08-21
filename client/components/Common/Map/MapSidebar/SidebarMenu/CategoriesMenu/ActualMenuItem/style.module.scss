@@ -1,3 +1,5 @@
+@import 'assets/scss/helpers/variables';
+
 .card__wrapper {
   padding: 21px 21px;
   border-radius: 8px;
@@ -36,6 +38,7 @@
   background-color: #F7F7F8;
   border-radius: 8px;
   position: relative;
+
   &:after {
     content: '';
     position: absolute;
@@ -45,7 +48,7 @@
     left: 0;
     border-radius: 8px;
 
-    background-color: #1f39ba;
+    background-color: $red;
     animation: line-animation 1s ease forwards;
   }
 }
