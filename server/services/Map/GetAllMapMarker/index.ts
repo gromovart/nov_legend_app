@@ -17,6 +17,8 @@ export default class Service {
       .createQueryBuilder('mapMarker')
       .select([
         'mapMarker.id',
+        'mapMarker.lat',
+        'mapMarker.long',
         'mapMarker.name',
         'mapMarker.shortDescription',
         'mapMarker.description',

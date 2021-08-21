@@ -17,8 +17,8 @@ export class addMapMarkers1629522266634 implements MigrationInterface {
       const createdMapCategory = await queryRunner.manager.save(mapCategory);
 
       const markers = objects.map((_: any, i) => ({
-        lat: i,
-        long: i + 1,
+        lat: _.lat || 0,
+        long: _.long || i + 0,
         s2_path: '',
         shortDescription: _.shortDescription,
         description: _.description,
