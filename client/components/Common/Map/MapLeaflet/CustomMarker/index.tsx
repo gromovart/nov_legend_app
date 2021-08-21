@@ -1,15 +1,25 @@
 import React from 'react';
 import { Marker } from 'react-leaflet';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import MarkerPopup from '../MarkerPopup';
 import { getIcon } from './MarkerIcon';
+<<<<<<< HEAD
 import {
   setBackgroundImgAction,
   setCurrentMarkerAction,
 } from '../../../../../store/MapData/actions';
+=======
+import { setCurrentMarkerAction } from '../../../../../store/MapData/actions';
+import { getIsCreateNewRoute } from '../../../../../store/MapData/selectors';
+>>>>>>> 09dd506a4f72ada081562070d71bcb87b8f3eb4a
 
-const VenueMarkers: React.FC<any> = ({ marker, currentMarker }) => {
+const VenueMarkers: React.FC<any> = ({
+  marker,
+  currentMarker,
+  createNewRouteHandler,
+}) => {
   const dispatch = useDispatch();
+  const isCreatingNewRoute = useSelector(getIsCreateNewRoute);
   const mouseOverHandler = (e: any) => {
     e.target.openPopup();
   };
@@ -46,9 +56,14 @@ const VenueMarkers: React.FC<any> = ({ marker, currentMarker }) => {
     return currentPath;
   };
   const clickHandler = (e: any) => {
-    e.target.openPopup();
-    dispatch(setCurrentMarkerAction(marker));
-    dispatch(setBackgroundImgAction(getBg(marker?.mapCategories?.[0]?.title)));
+    if (isCreatingNewRoute) {
+      createNewRouteHandler(marker);
+      dispatch(setBackgroundImgAction(getBg(marker?.mapCategories?.[0]?.title)));
+    } else {
+      e.target.openPopup();
+      dispatch(setCurrentMarkerAction(marker));
+      dispatch(setBackgroundImgAction(getBg(marker?.mapCategories?.[0]?.title)));
+    }
   };
 
   return (
