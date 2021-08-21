@@ -1,3 +1,4 @@
+import { SoundOutlined } from '@ant-design/icons/lib/icons';
 import React from 'react';
 import style from './style.module.scss';
 
@@ -10,6 +11,16 @@ const ActualMenuItem = ({ title, year, percent }) => {
       <div className={style.popular__line}>
         <div className={style.line__orange} style={{ width: percent }} />
       </div>
+      <button
+        type="button"
+        className={style.btn__audio}
+        onClick={() => {
+          const audio = new Audio('/gusli.mp3');
+          audio.play();
+        }}
+      >
+        <SoundOutlined />
+      </button>
     </div>
   );
 };
