@@ -6,3 +6,6 @@ export const getMarkersData = (state: TStore) => {
 
 export const getCurrentMarkerData = (state: TStore) =>
   state.mapData.currentMarker;
+
+export const getCurrentBackgroundImg = (state: TStore) =>
+  state.mapData.currentBackgroundImg;
