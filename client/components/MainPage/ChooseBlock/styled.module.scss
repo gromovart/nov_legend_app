@@ -59,22 +59,20 @@
 .btn__choose_more {
   border: none;
   outline: none;
-  background-color: #1f39ba;
+  background-color: $red;
   color: #fff;
   border-radius: 10px;
   padding: 12px 34px;
   cursor: pointer;
-  font-family: Inter;
+  font-family: $ff-title;
   font-style: normal;
-  font-weight: bold;
-  font-size: 16px;
+  font-size: 18px;
   line-height: 26px;
-
   &:hover {
-    background-color: lighten(#1f39ba, 10%);
+    background-color: lighten($red, 10);
   }
   &:active {
-    background-color: #1f39ba;
+    background-color: $red;
   }
 }
 

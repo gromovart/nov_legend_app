@@ -105,7 +105,7 @@ const ChooseBlock = () => {
             </div>
           </div>
           <button className={style.btn__choose_more} type="button">
-            Explore More
+            Подробнее
           </button>
         </div>
       </div>
