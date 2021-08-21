@@ -5,9 +5,6 @@ import MainPage from '../components/MainPage';
 const IndexPage = () => (
   <>
     <MainPage />
-    <div className="container">
-      <MapComponent />
-    </div>
   </>
 );
 
