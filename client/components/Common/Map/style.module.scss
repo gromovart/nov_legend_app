@@ -75,7 +75,13 @@
       justify-content: space-between;
       flex-direction: row;
 
+      h4 {
+        font-family: $ff-title;
+      }
+
+
       span {
+
         color: $grey-light;
       }
     }

@@ -69,7 +69,12 @@ const HeaderSidebar: React.FC<THeaderSidebarProps> = ({
       <div className={style.sidebar__header}>
         <div
           className={style.header_title}
-          style={{ display: 'flex', justifyContent: 'space-between' }}
+          style={{
+            display: 'flex',
+            justifyContent: 'space-between',
+            fontFamily: 'ArnoldBocklin',
+            fontSize: '16px',
+          }}
         >
           <h4>Достопримечательности</h4>
           {(currentMarker ||
