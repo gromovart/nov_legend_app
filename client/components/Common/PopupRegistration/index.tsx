@@ -18,7 +18,7 @@ const PopupRegistration = ({ modalVisible, setModal2Visible, setUserData }) => {
 
       setUserData(data);
       setModal2Visible(false);
-      // localStorage.setItem('userData', JSON.stringify(data));
+      localStorage.setItem('userData', JSON.stringify(data));
     } catch (e) {
       console.log(e);
     }
