@@ -18,7 +18,7 @@ export class addMapMarkers1629522266634 implements MigrationInterface {
 
       const markers = objects.map((_: any, i) => ({
         lat: _.lat || 0,
-        long: _.long || i + 0,
+        long: _.long || 0,
         s2_path: '',
         shortDescription: _.shortDescription,
         description: _.description,

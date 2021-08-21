@@ -24,7 +24,9 @@ export default class Service {
         'mapMarker.description',
         'mapMarker.documents',
         'mapMarker.informants',
-      ]);
+      ])
+      .addOrderBy('mapMarker.lat', 'DESC')
+      .addOrderBy('mapMarker.long', 'DESC');
 
     if (mapCategoryId) {
       responseCondition
