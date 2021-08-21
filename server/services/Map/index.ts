@@ -1,13 +1,13 @@
-import GetAll from './GetAll';
+import GetAllMapMarker from './GetAllMapMarker';
 
 class Service {
   public static readonly nameService = 'MapService';
 
-  public getAll: GetAll['getAll'];
+  public GetAllMapMarker: GetAllMapMarker['getAllMapMarker'];
 
-  constructor(GetAllService: GetAll) {
-    this.getAll = GetAllService.getAll;
+  constructor(GetAllService: GetAllMapMarker) {
+    this.GetAllMapMarker = GetAllService.getAllMapMarker;
   }
 }
 
-export default new Service(new GetAll());
+export default new Service(new GetAllMapMarker());

@@ -2,9 +2,12 @@ import app from '../../../app';
 import MapMarker from '../../../database/entities/MapMarker';
 
 export default class Service {
-  public static readonly nameService = 'GetAll';
+  public static readonly nameService = 'GetAllMapMarker';
 
-  public getAll = async (params: any, requestMeta: any = {}): Promise<any> => {
+  public getAllMapMarker = async (
+    params: any,
+    requestMeta: any = {}
+  ): Promise<any> => {
     const {
       query: { mapCategoryId },
     } = params;

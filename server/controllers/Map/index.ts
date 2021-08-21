@@ -5,7 +5,7 @@ export default {
   GetAll: async (request): Promise<any> => {
     const { query } = request;
     try {
-      return await MapServices.getAll({
+      return await MapServices.GetAllMapMarker({
         query,
       });
     } catch (e) {
