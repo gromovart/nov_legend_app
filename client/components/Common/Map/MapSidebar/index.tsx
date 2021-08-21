@@ -2,7 +2,6 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import style from '../style.module.scss';
 import HeaderSidebar from './HeaderSidebar';
-import SidebarMenu from './SidebarMenu';
 import ActualMenuItem from './SidebarMenu/CategoriesMenu/ActualMenuItem';
 import ScrollWrapper from '../../ScrollWrapper';
 import { getCurrentMarkerData } from '../../../../store/MapData/selectors';
@@ -47,6 +46,7 @@ const MapSidebar: React.FC<TProps & any> = ({
           markersData.map((item) => (
             <ActualMenuItem
               title={item.name}
+              audio={item.audio}
               percent={`${getRandom(10, 100)}%`}
               year={`${getRandom(935, 1800)} г.`}
             />

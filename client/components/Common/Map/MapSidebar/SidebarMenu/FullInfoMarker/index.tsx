@@ -11,11 +11,14 @@ const FullInfoMarker = ({
   percent,
   description,
   shortDescription,
+  images,
+  video,
+  audio: newAudio,
 }) => {
   const [isPlayAudio, setIsPlayAudio] = React.useState(false);
   const [visible, setVisible] = React.useState(false);
 
-  const audio = React.useRef(new Audio('/gusli.mp3'));
+  const audio = React.useRef(new Audio(`/${newAudio}`));
 
   const setAudioPlay = () => {
     if (!isPlayAudio) audio.current.play();
@@ -45,27 +48,9 @@ const FullInfoMarker = ({
         </button>
         <ScrollWrapper>
           <div className={style.image__wrapper}>
-            <Image
-              width={130}
-              src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
-            />
-            <Image
-              width={130}
-              src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
-            />
-
-            <Image
-              width={130}
-              src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
-            />
-            <Image
-              width={130}
-              src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
-            />
-            <Image
-              width={130}
-              src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
-            />
+            {images.map((item) => (
+              <Image width={130} src={`/images/${item}`} />
+            ))}
           </div>
         </ScrollWrapper>
         <button
@@ -77,7 +62,7 @@ const FullInfoMarker = ({
         >
           Видео описание
         </button>
-        <ModalVideo visible={visible} setVisible={setVisible} />
+        <ModalVideo visible={visible} setVisible={setVisible} url={video} />
         <Divider type="horizontal" className={style.divider} />
         {description && (
           <>
