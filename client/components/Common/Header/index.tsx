@@ -1,10 +1,13 @@
 import { LogoutOutlined } from '@ant-design/icons';
 import React from 'react';
+import PopupRegistration from '../PopupRegistration';
 import PopupAuthorization from '../PopupAutorization';
 import style from './styled.module.scss';
 
 const Header = () => {
   const [modalVisible, setModal2Visible] = React.useState(false);
+  const [modalRegistrationVisible, setModalRegistrationVisible] =
+    React.useState(false);
   const [userData, setUserData] = React.useState(
     JSON.parse(localStorage.getItem('userData'))
   );
@@ -25,9 +28,15 @@ const Header = () => {
         </a>
         {!userData ? (
           <>
-            <a href="/" className={style.item}>
+            <button
+              type="button"
+              className={style.item}
+              onClick={() => {
+                setModalRegistrationVisible(true);
+              }}
+            >
               Регистрация
-            </a>
+            </button>
 
             <button
               className={style.btn__sign_up}
@@ -59,6 +68,11 @@ const Header = () => {
         <PopupAuthorization
           modalVisible={modalVisible}
           setModal2Visible={setModal2Visible}
+          setUserData={setUserData}
+        />
+        <PopupRegistration
+          modalVisible={modalRegistrationVisible}
+          setModal2Visible={setModalRegistrationVisible}
           setUserData={setUserData}
         />
       </div>
