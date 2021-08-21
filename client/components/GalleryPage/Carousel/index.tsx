@@ -24,14 +24,14 @@ const CarouselComponent = () => {
         type="button"
         className={style.btn_next}
         onClick={() => {
-          console.log(ref.current.next());
+          ref.current.next();
         }}
       />
       <button
         type="button"
         className={style.btn_prev}
         onClick={() => {
-          console.log(ref.current.prev());
+          ref.current.prev();
         }}
       />
     </div>
