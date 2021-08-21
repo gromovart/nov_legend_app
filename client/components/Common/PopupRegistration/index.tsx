@@ -29,7 +29,7 @@ const PopupRegistration = ({ modalVisible, setModal2Visible, setUserData }) => {
   };
   return (
     <Modal
-      title="Авторизация"
+      title="Регистрация"
       centered
       visible={modalVisible}
       onOk={() => setModal2Visible(false)}
