@@ -6,3 +6,9 @@ export const getMarkersData = (state: TStore) => {
 
 export const getCurrentMarkerData = (state: TStore) =>
   state.mapData.currentMarker;
+
+export const getIsCreateNewRoute = (state: TStore) =>
+  state.mapData.isCreateNewRoute;
+
+export const getSelectedMarkers = (state: TStore) =>
+  state.mapData.selectedMarkers;

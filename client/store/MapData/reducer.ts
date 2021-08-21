@@ -4,6 +4,8 @@ import { TMapData } from './types';
 const initialState: TMapData = {
   markersData: [],
   currentMarker: null,
+  isCreateNewRoute: false,
+  selectedMarkers: null,
 };
 
 const mapDataReducer = (
@@ -20,6 +22,16 @@ const mapDataReducer = (
       return {
         ...state,
         currentMarker: action.payload,
+      };
+    case MapDataActionsTypes.setIsCreateRoute:
+      return {
+        ...state,
+        isCreateNewRoute: action.payload,
+      };
+    case MapDataActionsTypes.setSelectedMarkersAction:
+      return {
+        ...state,
+        selectedMarkers: action.payload,
       };
     default:
       return state;

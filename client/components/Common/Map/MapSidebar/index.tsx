@@ -4,7 +4,10 @@ import style from '../style.module.scss';
 import HeaderSidebar from './HeaderSidebar';
 import ActualMenuItem from './SidebarMenu/CategoriesMenu/ActualMenuItem';
 import ScrollWrapper from '../../ScrollWrapper';
-import { getCurrentMarkerData } from '../../../../store/MapData/selectors';
+import {
+  getCurrentMarkerData,
+  getSelectedMarkers,
+} from '../../../../store/MapData/selectors';
 import FullInfoMarker from './SidebarMenu/FullInfoMarker';
 
 type TProps = {
@@ -27,6 +30,8 @@ const MapSidebar: React.FC<TProps & any> = ({
   value,
 }) => {
   const selectedMarker = useSelector(getCurrentMarkerData);
+  const selectedMarkers = useSelector(getSelectedMarkers);
+  console.log(selectedMarkers);
   return (
     <div className={style.sidebar}>
       <HeaderSidebar
@@ -36,13 +41,24 @@ const MapSidebar: React.FC<TProps & any> = ({
         value={value}
       />
       <ScrollWrapper maxHeight={800}>
-        {selectedMarker && (
+        {selectedMarker && !selectedMarkers && (
           <FullInfoMarker
             {...selectedMarker}
             percent={`${getRandom(10, 100)}%`}
           />
         )}
+        {selectedMarkers &&
+          selectedMarkers.map((item) => (
+            <ActualMenuItem
+              title={item.name}
+              audio={item.audio}
+              percent={`${getRandom(10, 100)}%`}
+              year={`${getRandom(935, 1800)} г.`}
+              data={item}
+            />
+          ))}
         {!selectedMarker &&
+          !selectedMarkers &&
           markersData.map((item) => (
             <ActualMenuItem
               title={item.name}

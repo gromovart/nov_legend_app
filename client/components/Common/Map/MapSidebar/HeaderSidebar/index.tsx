@@ -3,7 +3,10 @@ import { useDispatch } from 'react-redux';
 import ArrowLeftOutlined from '@ant-design/icons/lib/icons/ArrowLeftOutlined';
 import style from '../../style.module.scss';
 import SearchInput from './SearchInput';
-import { setCurrentMarkerAction } from '../../../../../store/MapData/actions';
+import {
+  setCurrentMarkerAction,
+  setIsCreateRouteAction,
+} from '../../../../../store/MapData/actions';
 
 type THeaderSidebarProps = {
   goBack: () => void;
@@ -25,6 +28,7 @@ const HeaderSidebar: React.FC<THeaderSidebarProps> = ({
   const clickHandler = () => {
     dispatch(setCurrentMarkerAction(null));
   };
+
   return (
     // <div className={style['sidebar-header']}>
     //   <div className={style.header_title}>
@@ -60,6 +64,7 @@ const HeaderSidebar: React.FC<THeaderSidebarProps> = ({
             <ArrowLeftOutlined />
           </button>
         </div>
+
         <SearchInput
           title="Найти легенду"
           onChangeSearch={onChangeSearch}

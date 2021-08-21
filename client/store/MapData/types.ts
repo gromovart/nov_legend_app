@@ -10,4 +10,6 @@ export type TMarkersData = {
 export type TMapData = {
   markersData: any[];
   currentMarker: any;
+  isCreateNewRoute: boolean;
+  selectedMarkers: any[];
 };
