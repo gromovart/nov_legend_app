@@ -1,5 +1,5 @@
 import { MigrationInterface, QueryRunner } from 'typeorm';
-import { jsonToArrayCustom } from '../../utils/helpers';
+import { jsonToArrayCustom, latLongToS2Path } from '../../utils/helpers';
 import MapCategory from '../entities/MapCategory';
 import MapCategoryMapMarker from '../entities/MapCategoryMapMarker';
 import MapMarker from '../entities/MapMarker';
@@ -19,7 +19,7 @@ export class addMapMarkers1629522266634 implements MigrationInterface {
       const markers = objects.map((_: any, i) => ({
         lat: _.lat || 0,
         long: _.long || 0,
-        s2_path: '',
+        s2_path: latLongToS2Path(_.lat || 0, _.long || 0),
         shortDescription: _.shortDescription,
         description: _.description,
         documents: _.documents,
