@@ -1,4 +1,4 @@
-import { Button, Form, Input, Modal } from 'antd';
+import { Form, Input, Modal } from 'antd';
 import React from 'react';
 import style from './style.module.scss';
 
@@ -28,30 +28,32 @@ const PopupAuthorization = ({ modalVisible, setModal2Visible }) => {
       >
         <Form.Item
           label="Логин"
-          name="username"
-          rules={[{ required: true, message: 'Please input your username!' }]}
+          name="name"
+          rules={[{ required: true, message: 'Пожалуйста, введите логин' }]}
         >
-          <Input />
+          <Input className={style.form__input} />
         </Form.Item>
 
         <Form.Item
           label="Пароль"
           name="password"
-          rules={[{ required: true, message: 'Please input your password!' }]}
+          rules={[{ required: true, message: 'Пожалуйста, введите пароль' }]}
         >
-          <Input.Password />
+          <Input.Password className={style.form__input} />
         </Form.Item>
 
-        <Form.Item>
-          <div className={style.modal__footer}>
-            <Button type="primary" htmlType="submit">
-              Submit
-            </Button>
-            <Button type="ghost" htmlType="submit">
-              Submit
-            </Button>
-          </div>
-        </Form.Item>
+        <div className={style.modal__footer}>
+          <button type="submit" className={style.btn__success}>
+            Войти
+          </button>
+          <button
+            type="button"
+            className={style.btn__cancel}
+            onClick={() => setModal2Visible(false)}
+          >
+            Закрыть
+          </button>
+        </div>
       </Form>
     </Modal>
   );
