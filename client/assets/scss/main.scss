@@ -38,6 +38,10 @@ body {
   font-size: 22px !important;
 }
 
+.leaflet-routing-container {
+  display: none;
+}
+
 .leaflet-popup {
   width: 70px;
   height: 70px;

@@ -2,7 +2,7 @@ import React, { FC, useEffect, useState } from 'react';
 import dynamic from 'next/dynamic';
 import { useDispatch, useSelector } from 'react-redux';
 import style from './style.module.scss';
-import Icon from './Icon';
+
 import { getMarkersData } from '../../../store/MapData/selectors';
 import { getMarkersAction } from '../../../store/MapData/actions';
 

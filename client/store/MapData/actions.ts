@@ -4,6 +4,8 @@ import { TMarkersData } from './types';
 export enum MapDataActionsTypes {
   getMarkersAction = 'getMarkers',
   setCurrentMarkerAction = 'setCurrentMarker',
+  setIsCreateRoute = 'setIsCreateRoute',
+  setSelectedMarkersAction = 'setSelectedMarkersAction',
   setBackgroundImgAction = 'setBackgroundImg',
 }
 
@@ -33,6 +35,24 @@ export const setBackgroundImgAction = (params: any) => {
   return (dispatch: any) => {
     dispatch({
       type: MapDataActionsTypes.setBackgroundImgAction,
+      payload: params,
+    });
+  };
+};
+
+export const setIsCreateRouteAction = (params: boolean) => {
+  return (dispatch: any) => {
+    dispatch({
+      type: MapDataActionsTypes.setIsCreateRoute,
+      payload: params,
+    });
+  };
+};
+
+export const setSelectedMarkersAction = (params: any) => {
+  return (dispatch: any) => {
+    dispatch({
+      type: MapDataActionsTypes.setSelectedMarkersAction,
       payload: params,
     });
   };

@@ -1,12 +1,18 @@
 import React from 'react';
 import { Marker } from 'react-leaflet';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import MarkerPopup from '../MarkerPopup';
 import { getIcon } from './MarkerIcon';
 import { setCurrentMarkerAction } from '../../../../../store/MapData/actions';
+import { getIsCreateNewRoute } from '../../../../../store/MapData/selectors';
 
-const VenueMarkers: React.FC<any> = ({ marker, currentMarker }) => {
+const VenueMarkers: React.FC<any> = ({
+  marker,
+  currentMarker,
+  createNewRouteHandler,
+}) => {
   const dispatch = useDispatch();
+  const isCreatingNewRoute = useSelector(getIsCreateNewRoute);
   const mouseOverHandler = (e: any) => {
     e.target.openPopup();
   };
@@ -18,8 +24,12 @@ const VenueMarkers: React.FC<any> = ({ marker, currentMarker }) => {
     lng: marker.long,
   };
   const clickHandler = (e: any) => {
-    e.target.openPopup();
-    dispatch(setCurrentMarkerAction(marker));
+    if (isCreatingNewRoute) {
+      createNewRouteHandler(marker);
+    } else {
+      e.target.openPopup();
+      dispatch(setCurrentMarkerAction(marker));
+    }
   };
   getIcon(marker?.mapCategories?.[0]?.title);
   return (

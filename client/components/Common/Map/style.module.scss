@@ -52,6 +52,7 @@
 }
 
 .sidebar {
+  width: 35%;
   display: flex;
   flex-direction: column;
   padding: 10px;
@@ -411,7 +412,6 @@
 }
 
 .sidebar__header {
-
   border-radius: 10px;
   // background: #fafaff;
   //padding: 10px;
@@ -428,4 +428,3 @@
 
   color: #474747;
 }
-
