@@ -41,7 +41,7 @@ const MapSidebar: React.FC<TProps & any> = ({
         value={value}
       />
       <ScrollWrapper maxHeight={800}>
-        {selectedMarker && !selectedMarkers && (
+        {selectedMarker && (
           <FullInfoMarker
             {...selectedMarker}
             percent={`${getRandom(10, 100)}%`}

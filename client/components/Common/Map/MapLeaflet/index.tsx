@@ -111,9 +111,9 @@ const MapDynamicView = ({
       )}
       <MapContainer
         style={{ width: '100%', height: '100%', zIndex: 0 }}
-        center={{ lat: 58.55, lng: 31.33 }}
+        center={{ lat: 58.5, lng: 31.6 }}
         whenCreated={setMap}
-        zoom={12}
+        zoom={9}
       >
         {/* <MyComponent /> */}
         <TileLayer
