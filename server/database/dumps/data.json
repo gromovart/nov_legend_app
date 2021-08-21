@@ -339,7 +339,8 @@
           "informants": "",
           "images": [""],
           "audio": "",
-          "video": ""
+          "video": "",
+          "category": "Легенды"
         },
         {
           "lat": 58.6609055,
@@ -351,7 +352,8 @@
           "informants": "",
           "images": [""],
           "audio": "",
-          "video": ""
+          "video": "",
+          "category": "Предания"
         },
         {
           "lat": 58.25,
@@ -363,7 +365,8 @@
           "informants": "",
           "images": ["ilmen_1.jpeg", "ilmen_2.jpeg", "ilmen_3.jpeg"],
           "audio": "ilmen.mp3",
-          "video": "https://www.youtube.com/embed/rmU7VPAhfVo"
+          "video": "https://www.youtube.com/embed/rmU7VPAhfVo",
+          "category": "Озёра"
         },
         {
           "lat": 56.6675,
@@ -375,7 +378,8 @@
           "informants": "",
           "images": [""],
           "audio": "",
-          "video": ""
+          "video": "",
+          "category": "Источники"
         },
         {
           "lat": 58.366667,
@@ -385,9 +389,10 @@
           "description": "Люди издревле поклонялись валунам, придавали им некое магическое значение, наделяли их способностью исцелять болезни и совершали рядом с ними ритуалы. Даже сейчас, в период забытья, к камню ведут натоптанные тропинки, и на нем лежат свежие монетки - приношения.\n Информации об этом камне мало. Название Медведица же объясняют несколькими способами. Кто-то увидел в форме камня спящего медведя. Кто-то предполагает, что название дано за схожесть рисунка, который образуют лунки на камне, с созвездием Большой Медведицы.\n М.В. Шорин в своей статье \"Культовые камни Прильменья\" (оттуда взяла иллюстрацию, см. фото 5 в карусели) берет за основу языческий культ почитания Велеса и предполагает, что камень назван в честь его зооморфного воплощения - медведя.\n Найти камень просто - он расположен в Новгородском районе, прямо у дороги между д. Радбелик и д. Липицы, неподалеку от поворота к д. Десятины.",
           "documents": "",
           "informants": "",
-          "images": ["bear_stone_1.jpeg","bear_stone_2.jpeg"],
+          "images": ["bear_stone_1.jpeg", "bear_stone_2.jpeg"],
           "audio": "",
-          "video": ""
+          "video": "",
+          "category": "Камни"
         },
         {
           "lat": 55.435833,
@@ -399,7 +404,8 @@
           "informants": "",
           "images": [""],
           "audio": "",
-          "video": ""
+          "video": "",
+          "category": "Другое"
         },
         {
           "lat": 58.316667,
@@ -411,7 +417,8 @@
           "informants": "",
           "images": [""],
           "audio": "",
-          "video": ""
+          "video": "",
+          "category": "Легенды"
         },
         {
           "title": "«Предания о касатиках» Поозерье",
@@ -421,7 +428,8 @@
           "informants": "",
           "images": [""],
           "audio": "",
-          "video": ""
+          "video": "",
+          "category": "Предания"
         },
         {
           "lat": 58.301944,
@@ -433,7 +441,8 @@
           "informants": "",
           "images": [""],
           "audio": "",
-          "video": ""
+          "video": "",
+          "category": "Камни"
         },
         {
           "title": "Легенды о названиях деревень Марково, Поозерье, Чавницы",
@@ -443,7 +452,8 @@
           "informants": "",
           "images": [""],
           "audio": "",
-          "video": ""
+          "video": "",
+          "category": "Легенды"
         },
         {
           "lat": 58.4,
@@ -455,7 +465,8 @@
           "informants": "",
           "images": [""],
           "audio": "",
-          "video": ""
+          "video": "",
+          "category": "Камни"
         },
         {
           "lat": 58.4,
@@ -467,7 +478,8 @@
           "informants": "",
           "images": [""],
           "audio": "",
-          "video": ""
+          "video": "",
+          "category": "Легенды"
         },
         {
           "lat": 58.049167,
@@ -479,7 +491,8 @@
           "informants": "",
           "images": [""],
           "audio": "",
-          "video": ""
+          "video": "",
+          "category": "Камни"
         },
         {
           "lat": 58.517658,
@@ -491,7 +504,8 @@
           "informants": "",
           "images": [""],
           "audio": "",
-          "video": ""
+          "video": "",
+          "category": "Камни"
         },
         {
           "lat": 58.472778,
@@ -503,7 +517,8 @@
           "informants": "",
           "images": ["perin_1.png", "perin_2.jpg", "perin_3.jpeg"],
           "audio": "perin.mp3",
-          "video": "https://www.youtube.com/embed/2i5WSboV5vI"
+          "video": "https://www.youtube.com/embed/2i5WSboV5vI",
+          "category": "Другое"
         }
       ]
     },
@@ -515,63 +530,72 @@
           "shortDescription": "",
           "description": "",
           "documents": "",
-          "informants": ""
+          "informants": "",
+          "category": "Легенды"
         },
         {
           "title": "Предание о посещении деревни Налючи А.С. Пушкиным (д. Налючи)",
           "shortDescription": "",
           "description": "",
           "documents": "",
-          "informants": ""
+          "informants": "",
+          "category": "Предания"
         },
         {
           "title": "Озеро Ильмень",
           "shortDescription": "",
           "description": "",
           "documents": "",
-          "informants": ""
+          "informants": "",
+          "category": "Озёра"
         },
         {
           "title": "Святой источник Параскевы Пятницы",
           "shortDescription": "",
           "description": "",
           "documents": "",
-          "informants": ""
+          "informants": "",
+          "category": "Источники"
         },
         {
           "title": "Остров «Девичьих слез» на реке Пола",
           "shortDescription": "",
           "description": "",
           "documents": "",
-          "informants": ""
+          "informants": "",
+          "category": "Другое"
         },
         {
           "title": "Предание о заводе электроизоляторов Сименса",
           "shortDescription": "",
           "description": "",
           "documents": "",
-          "informants": ""
+          "informants": "",
+          "category": "Предания"
         },
         {
           "title": "Святой источник Тихвинской Божией Матери",
           "shortDescription": "",
           "description": "",
           "documents": "",
-          "informants": ""
+          "informants": "",
+          "category": "Источники"
         },
         {
           "title": "Места «Маткин берег» и «Сенина гора» у д. Городок",
           "shortDescription": "",
           "description": "",
           "documents": "",
-          "informants": ""
+          "informants": "",
+          "category": "Другое"
         },
         {
           "title": "Cвятой источник Николая Чудотворца",
           "shortDescription": "",
           "description": "",
           "documents": "",
-          "informants": ""
+          "informants": "",
+          "category": "Источники"
         }
       ]
     },
