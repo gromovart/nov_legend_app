@@ -1,9 +1,12 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import style from '../style.module.scss';
 import HeaderSidebar from './HeaderSidebar';
 import SidebarMenu from './SidebarMenu';
 import ActualMenuItem from './SidebarMenu/CategoriesMenu/ActualMenuItem';
 import ScrollWrapper from '../../ScrollWrapper';
+import { getCurrentMarkerData } from '../../../../store/MapData/selectors';
+import FullInfoMarker from './SidebarMenu/FullInfoMarker';
 
 type TProps = {
   goBack: () => void;
@@ -19,14 +22,12 @@ type TProps = {
 const getRandom = (min, max) => Math.floor(Math.random() * (max - min) + min);
 const MapSidebar: React.FC<TProps & any> = ({
   goBack,
-  sidebarClickHandler,
-  searchValue,
   markersData,
   onChangeSearch,
   clearSearch,
   value,
-  seeMoreHandler,
 }) => {
+  const selectedMarker = useSelector(getCurrentMarkerData);
   return (
     <div className={style.sidebar}>
       <HeaderSidebar
@@ -36,13 +37,20 @@ const MapSidebar: React.FC<TProps & any> = ({
         value={value}
       />
       <ScrollWrapper maxHeight={800}>
-        {markersData.map((item) => (
-          <ActualMenuItem
-            title={item.name}
+        {selectedMarker && (
+          <FullInfoMarker
+            {...selectedMarker}
             percent={`${getRandom(10, 100)}%`}
-            year={`${getRandom(935, 1800)} г.`}
           />
-        ))}
+        )}
+        {!selectedMarker &&
+          markersData.map((item) => (
+            <ActualMenuItem
+              title={item.name}
+              percent={`${getRandom(10, 100)}%`}
+              year={`${getRandom(935, 1800)} г.`}
+            />
+          ))}
       </ScrollWrapper>
 
       {/* <ActualMenuItem */}
