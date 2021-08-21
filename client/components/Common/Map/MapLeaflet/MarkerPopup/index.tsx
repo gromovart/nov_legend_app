@@ -8,7 +8,7 @@ const MarkerPopup = ({ data }: any) => {
   return (
     <Popup autoClose={false}>
       <div className={style.popup_preview_wrapper}>
-        <img src={`images/${data?.images[0]}`} alt={data?.images[0]} />
+        <img src={`images/${data?.images?.[0]}`} alt={data?.images?.[0]} />
       </div>
       {/* <div>
         <span className={style.popup_title}>{`Название: `}</span>
