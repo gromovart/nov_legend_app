@@ -8,12 +8,9 @@ export default [
   {
     method: 'GET',
     path: '/map-category',
-    handler: async () => ({}),
+    handler: MapControllers.GetAllMapCategory,
     options: {
       cors: true,
-      validate: {
-        query: <any>V.mapCategoryQuery,
-      },
       tags: ['api', 'mapCategory'],
       description: 'Получить все категории каталога карты',
       plugins: {
@@ -92,7 +89,7 @@ export default [
   {
     method: 'GET',
     path: '/map-marker',
-    handler: MapControllers.GetAll,
+    handler: MapControllers.GetAllMapMarker,
     options: {
       cors: true,
       validate: {
