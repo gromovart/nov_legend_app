@@ -1,10 +1,12 @@
 import React from 'react';
 import { Marker } from 'react-leaflet';
+import { useDispatch } from 'react-redux';
 import MarkerPopup from '../MarkerPopup';
 import MarkerIcon from './MarkerIcon';
+import { setCurrentMarkerAction } from '../../../../../store/MapData/actions';
 
 const VenueMarkers: React.FC<any> = ({ marker, currentMarker }) => {
-  const windowWidth = window.screen.width;
+  const dispatch = useDispatch();
   const mouseOverHandler = (e: any) => {
     e.target.openPopup();
   };
@@ -16,7 +18,8 @@ const VenueMarkers: React.FC<any> = ({ marker, currentMarker }) => {
     lng: marker.long,
   };
   const clickHandler = (e: any) => {
-    if (windowWidth > 1024) e.target.openPopup();
+    e.target.openPopup();
+    dispatch(setCurrentMarkerAction(marker));
   };
 
   return (
@@ -24,13 +27,14 @@ const VenueMarkers: React.FC<any> = ({ marker, currentMarker }) => {
       <Marker
         position={coordinate}
         // riseOnHover
+        interactive
         bubblingMouseEvents={false}
         zIndexOffset={currentMarker === marker.id ? 50 : 0}
         icon={MarkerIcon}
         eventHandlers={{
           click: clickHandler,
-          // mouseout: mouseOutHandler,
-          // mouseover: mouseOverHandler,
+          mouseout: mouseOutHandler,
+          mouseover: mouseOverHandler,
         }}
       >
         <MarkerPopup data={marker} />

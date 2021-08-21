@@ -1,4 +1,5 @@
 @import 'normalize';
+@import './helpers/_variables.scss';
 @import './fonts/fonts.scss';
 
 body {
@@ -14,9 +15,8 @@ body {
 //  transform: rotate(180deg);
 //}
 
-
 .map__container_wrapper {
-  background: url("/nov_footer.jpg");
+  background: url('/nov_footer.jpg');
   height: 1350px;
   //opacity: 0.25;
   background-size: cover;
@@ -27,4 +27,11 @@ body {
   width: 100%;
   height: 100%;
   background: rgba(#fff, 0.94);
+}
+
+.ant-modal-title {
+  font-family: $ff-title;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 22px !important;
 }

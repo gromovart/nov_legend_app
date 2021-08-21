@@ -3,6 +3,7 @@ import { TMapData } from './types';
 
 const initialState: TMapData = {
   markersData: [],
+  currentMarker: null,
 };
 
 const mapDataReducer = (
@@ -15,7 +16,11 @@ const mapDataReducer = (
         ...state,
         markersData: action.payload.data,
       };
-
+    case MapDataActionsTypes.setCurrentMarkerAction:
+      return {
+        ...state,
+        currentMarker: action.payload,
+      };
     default:
       return state;
   }

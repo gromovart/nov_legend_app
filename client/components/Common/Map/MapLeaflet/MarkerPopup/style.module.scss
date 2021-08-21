@@ -1,16 +1,20 @@
 @import "assets/scss/helpers/variables";
 
 .popup_title {
-  font-size: 14px;
+  font-size: 16px;
   font-weight: bold;
   margin-bottom: 6px;
   color: $red;
+  font-family: $ff-title;
 }
 
 .popup_text {
-
-  font-size: 14px;
+  font-family: $ff;
+  font-size: 16px;
   font-weight: bold;
   margin-bottom: 6px;
-  color: $red;
+}
+
+.popup_link {
+  text-align: end;
 }
