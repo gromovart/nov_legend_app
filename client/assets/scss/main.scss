@@ -15,7 +15,6 @@ body {
 //}
 
 .leaflet-popup-content-wrapper {
-
   background: url("/old_paper.png") !important;
   color: rgba(0, 0, 0, 0.7) !important;
   border-radius: 8px !important;
@@ -23,4 +22,19 @@ body {
 
 .leaflet-popup-tip {
   background: url("/old_paper.png") !important;
+}
+
+.map__container_wrapper {
+  background: url("/scroll.png");
+
+  height: 1350px;
+  //opacity: 0.25;
+  background-size: cover;
+}
+
+.opacity_container {
+  padding-top: 250px;
+  width: 100%;
+  height: 100%;
+  background: rgba(#fff, 0.5);
 }
