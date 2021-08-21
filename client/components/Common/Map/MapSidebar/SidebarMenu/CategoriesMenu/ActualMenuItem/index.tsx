@@ -30,6 +30,7 @@ const ActualMenuItem = ({ title, year, percent, audio: newAudio, data }) => {
         <Image
           width={50}
           height={50}
+          layout="fixed"
           src={getIcon(data?.mapCategories?.[0]?.title)?.path}
         />
         <div className={style.card__title}>{title}</div>
