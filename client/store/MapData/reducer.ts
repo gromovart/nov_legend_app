@@ -7,8 +7,9 @@ const initialState: TMapData = {
   currentBackgroundImg: '',
   isCreateNewRoute: false,
   selectedMarkers: null,
+  showCreateRoute: false,
 };
-
+const getRandom = (min, max) => Math.floor(Math.random() * (max - min) + min);
 const mapDataReducer = (
   state = initialState,
   action: { type: string; payload: any }
@@ -17,7 +18,11 @@ const mapDataReducer = (
     case MapDataActionsTypes.getMarkersAction:
       return {
         ...state,
-        markersData: action.payload.data,
+        markersData: action.payload.data.map((item) => ({
+          ...item,
+          percent: getRandom(10, 100),
+          year: getRandom(935, 1900),
+        })),
       };
     case MapDataActionsTypes.setCurrentMarkerAction:
       return {
@@ -38,6 +43,11 @@ const mapDataReducer = (
       return {
         ...state,
         currentBackgroundImg: action.payload,
+      };
+    case MapDataActionsTypes.setShowCreateRouteAction:
+      return {
+        ...state,
+        showCreateRoute: action.payload,
       };
     default:
       return state;

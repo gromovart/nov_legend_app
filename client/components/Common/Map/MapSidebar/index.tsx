@@ -41,30 +41,31 @@ const MapSidebar: React.FC<TProps & any> = ({
         value={value}
       />
       <ScrollWrapper maxHeight={800}>
-        {selectedMarker && !selectedMarkers && (
+        {selectedMarker && (
           <FullInfoMarker
             {...selectedMarker}
             percent={`${getRandom(10, 100)}%`}
           />
         )}
         {selectedMarkers &&
+          !selectedMarker &&
           selectedMarkers.map((item) => (
             <ActualMenuItem
               title={item.name}
               audio={item.audio}
-              percent={`${getRandom(10, 100)}%`}
-              year={`${getRandom(935, 1800)} г.`}
+              percent={`${item.percent}%`}
+              year={`${item.year} г.`}
               data={item}
             />
           ))}
         {!selectedMarker &&
-          !selectedMarkers &&
+          (!selectedMarkers || selectedMarkers?.length === 0) &&
           markersData.map((item) => (
             <ActualMenuItem
               title={item.name}
               audio={item.audio}
-              percent={`${getRandom(10, 100)}%`}
-              year={`${getRandom(935, 1800)} г.`}
+              percent={`${item.percent}%`}
+              year={`${item.year} г.`}
               data={item}
             />
           ))}

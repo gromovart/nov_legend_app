@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import ArrowLeftOutlined from '@ant-design/icons/lib/icons/ArrowLeftOutlined';
 import style from '../../style.module.scss';
 import SearchInput from './SearchInput';
@@ -7,7 +7,13 @@ import {
   setCurrentMarkerAction,
   setIsCreateRouteAction,
   setSelectedMarkersAction,
+  setShowCreateRouteAction,
 } from '../../../../../store/MapData/actions';
+import {
+  getCurrentMarkerData,
+  getSelectedMarkers,
+  getShowCreateRoute,
+} from '../../../../../store/MapData/selectors';
 
 type THeaderSidebarProps = {
   goBack: () => void;
@@ -24,11 +30,19 @@ const HeaderSidebar: React.FC<THeaderSidebarProps> = ({
 }) => {
   const dispatch = useDispatch();
   const [value, setValue] = useState('');
+  const currentMarker = useSelector(getCurrentMarkerData);
+  const selectedMarkers = useSelector(getSelectedMarkers);
+  const showRoute = useSelector(getShowCreateRoute);
   // const count = useSelector(getMarkersCount);
   // const searchCount = useSelector(getSearchCount);
   const clickHandler = () => {
-    dispatch(setCurrentMarkerAction(null));
-    dispatch(setSelectedMarkersAction(null));
+    if (currentMarker) {
+      dispatch(setCurrentMarkerAction(null));
+    } else {
+      dispatch(setSelectedMarkersAction([]));
+      dispatch(setIsCreateRouteAction(false));
+      dispatch(setShowCreateRouteAction(false));
+    }
   };
 
   return (
@@ -58,13 +72,17 @@ const HeaderSidebar: React.FC<THeaderSidebarProps> = ({
           style={{ display: 'flex', justifyContent: 'space-between' }}
         >
           <h4>Достопримечательности</h4>
-          <button
-            className={style.header_button}
-            type="button"
-            onClick={clickHandler}
-          >
-            <ArrowLeftOutlined />
-          </button>
+          {(currentMarker ||
+            (showRoute &&
+              (selectedMarkers || selectedMarkers?.length !== 0))) && (
+            <button
+              className={style.header_button}
+              type="button"
+              onClick={clickHandler}
+            >
+              <ArrowLeftOutlined />
+            </button>
+          )}
         </div>
 
         <SearchInput

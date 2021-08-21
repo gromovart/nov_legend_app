@@ -11,15 +11,23 @@ import Markers from './CustomMarker';
 import {
   setIsCreateRouteAction,
   setSelectedMarkersAction,
+  setShowCreateRouteAction,
 } from '../../../../store/MapData/actions';
-import { getIsCreateNewRoute } from '../../../../store/MapData/selectors';
+import {
+  getIsCreateNewRoute,
+  getSelectedMarkers,
+  getShowCreateRoute,
+} from '../../../../store/MapData/selectors';
 import Icon from '../Icon';
 // import RoutingMachine from '../RoutingMachines';
 let distance;
 let time;
-const createRoutineMachineLayer = ({ selectedMarkers }) => {
+const createRoutineMachineLayer = () => {
+  const selectedMarkers = useSelector(getSelectedMarkers);
   const instance = L.Routing.control({
-    waypoints: selectedMarkers.map((item) => L.latLng(item.lat, item.long)),
+    waypoints: selectedMarkers
+      ? selectedMarkers.map((item) => L.latLng(item.lat, item.long))
+      : [],
     lineOptions: {
       styles: [{ color: '#6FA1EC', weight: 4 }],
     },
@@ -50,15 +58,21 @@ const MapDynamicView = ({
   const dispatch = useDispatch();
   const [map, setMap] = useState(null);
   const [position, setPosition] = useState(null);
-  const [selectedMarkers, setSelectedMarkers] = useState([]);
+  const selectedMarkers = useSelector(getSelectedMarkers);
   const createNewRouteHandler = (markerData: any) => {
-    setSelectedMarkers((prev) => [...prev, markerData]);
+    if (selectedMarkers) {
+      dispatch(setSelectedMarkersAction([...selectedMarkers, markerData]));
+    } else {
+      dispatch(setSelectedMarkersAction([markerData]));
+    }
   };
   const isCreatingNewRoute = useSelector(getIsCreateNewRoute);
+  const showCreateRoute = useSelector(getShowCreateRoute);
+
   const createHandler = () => {
     dispatch(setIsCreateRouteAction(true));
   };
-  const [createRoute, setCreateRoute] = useState(false);
+
   return (
     <>
       {isCreatingNewRoute && (
@@ -78,7 +92,7 @@ const MapDynamicView = ({
             }}
             type="button"
             onClick={() => {
-              setCreateRoute((prev) => !prev);
+              dispatch(setShowCreateRouteAction(true));
               dispatch(setIsCreateRouteAction(false));
               dispatch(setSelectedMarkersAction(selectedMarkers));
             }}
@@ -111,23 +125,34 @@ const MapDynamicView = ({
       )}
       <MapContainer
         style={{ width: '100%', height: '100%', zIndex: 0 }}
-        center={{ lat: 58.55, lng: 31.33 }}
+        center={{ lat: 58.5, lng: 31.6 }}
         whenCreated={setMap}
-        zoom={12}
+        zoom={9}
       >
         {/* <MyComponent /> */}
         <TileLayer
           url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager_labels_under/{z}/{x}/{y}.png"
           attribution='&copy; <a href="https://carto.com/">Carto</a> contributors'
         />
-        {markersData?.map((marker: any) => (
-          <Markers
-            key={marker.title}
-            marker={marker}
-            createNewRouteHandler={createNewRouteHandler}
-          />
-        ))}
-        {createRoute && <RoutingMachine selectedMarkers={selectedMarkers} />}
+        {showCreateRoute &&
+          selectedMarkers &&
+          selectedMarkers?.length !== 0 &&
+          selectedMarkers?.map((marker: any) => (
+            <Markers
+              key={marker.title}
+              marker={marker}
+              createNewRouteHandler={createNewRouteHandler}
+            />
+          ))}
+        {!showCreateRoute &&
+          markersData?.map((marker: any) => (
+            <Markers
+              key={marker.title}
+              marker={marker}
+              createNewRouteHandler={createNewRouteHandler}
+            />
+          ))}
+        {showCreateRoute && <RoutingMachine />}
       </MapContainer>
     </>
   );
