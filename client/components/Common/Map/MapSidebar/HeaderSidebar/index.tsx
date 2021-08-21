@@ -7,6 +7,7 @@ import {
   setCurrentMarkerAction,
   setIsCreateRouteAction,
   setSelectedMarkersAction,
+  setShowCreateRouteAction,
 } from '../../../../../store/MapData/actions';
 import { getCurrentMarkerData } from '../../../../../store/MapData/selectors';
 
@@ -32,7 +33,9 @@ const HeaderSidebar: React.FC<THeaderSidebarProps> = ({
     if (currentMarker) {
       dispatch(setCurrentMarkerAction(null));
     } else {
-      dispatch(setSelectedMarkersAction(null));
+      dispatch(setSelectedMarkersAction([]));
+      dispatch(setIsCreateRouteAction(false));
+      dispatch(setShowCreateRouteAction(false));
     }
   };
 

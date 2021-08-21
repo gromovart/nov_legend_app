@@ -13,4 +13,5 @@ export type TMapData = {
   isCreateNewRoute: boolean;
   selectedMarkers: any[];
   currentBackgroundImg: string;
+  showCreateRoute: boolean;
 };
