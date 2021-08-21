@@ -70,6 +70,15 @@ export default class MapMarker {
   @Column({ type: 'varchar', nullable: true })
   logo: string;
 
+  @Column({ type: 'simple-array', nullable: true })
+  images: string[];
+
+  @Column({ type: 'varchar', nullable: true })
+  audio: string;
+
+  @Column({ type: 'varchar', nullable: true })
+  video: string;
+
   @CreateDateColumn({ type: 'timestamp without time zone', default: null })
   created: Date;
 
