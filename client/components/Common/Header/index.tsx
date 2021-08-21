@@ -3,7 +3,7 @@ import PopupAuthorization from '../PopupAutorization';
 import style from './styled.module.scss';
 
 const Header = () => {
-  const [modalVisible, setModal2Visible] = React.useState(true);
+  const [modalVisible, setModal2Visible] = React.useState(false);
   return (
     <div className={`container ${style.header__wrapper}`}>
       <div className={style.header__logo}>
