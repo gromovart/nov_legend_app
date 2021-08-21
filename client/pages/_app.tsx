@@ -9,7 +9,7 @@ const WrappedApp: FC<AppProps> = ({ Component, pageProps }) => {
   return (
     <>
       <Head>
-        <title>ХАКАТОН</title>
+        <title>NOV.Legend</title>
       </Head>
       <Component {...pageProps} />
     </>

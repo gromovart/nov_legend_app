@@ -1,3 +1,4 @@
+@import '../../../assets/scss/helpers/variables';
 .choose__block_wrapper {
   display: grid;
   grid-template-columns: 0.7fr 1fr;
@@ -10,35 +11,32 @@
   margin-left: auto;
 }
 
-.choose__title {
-  font-family: Inter;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 14px;
-  line-height: 24px;
-}
-
 .choose__sub_title {
-  font-family: Inter;
+  font-family: $ff-title;
   font-style: normal;
   font-weight: bold;
   font-size: 36px;
   line-height: 52px;
   color: #474747;
-  max-width: 370px;
+  max-width: 470px;
   margin-bottom: 14px;
 }
 
 .choose__description {
-  font-family: Inter;
+  font-family: $ff;
   font-style: normal;
   font-weight: normal;
   font-size: 16px;
   line-height: 26px;
-
   color: #666666;
   max-width: 570px;
   margin-bottom: 14px;
+  span {
+    font-family: $ff-title;
+    span {
+      color: $red;
+    }
+  }
 }
 
 .choose__lists_item {
@@ -48,13 +46,14 @@
 }
 
 .list__item {
-  font-family: Inter;
+  font-family: $ff-title;
   font-style: normal;
   font-weight: bold;
   font-size: 16px;
   line-height: 26px;
   color: #474747;
   margin-bottom: 12px;
+  max-width: 210px;
 }
 
 .btn__choose_more {
@@ -65,7 +64,6 @@
   border-radius: 10px;
   padding: 12px 34px;
   cursor: pointer;
-
   font-family: Inter;
   font-style: normal;
   font-weight: bold;
@@ -77,5 +75,36 @@
   }
   &:active {
     background-color: #1f39ba;
+  }
+}
+
+.content {
+  &__player {
+    button {
+      border: none;
+      background: inherit;
+    }
+    display: flex;
+    align-items: center;
+    svg {
+      height: 25px;
+      width: 25px;
+    }
+  }
+  &__icon {
+    svg {
+      height: 25px;
+      width: 25px;
+    }
+  }
+  &__btn {
+    padding: 0;
+    font-family: $ff;
+    font-size: 16px;
+    margin-top: 22px;
+    border: none;
+    background: inherit;
+    display: flex;
+    align-items: center;
   }
 }
