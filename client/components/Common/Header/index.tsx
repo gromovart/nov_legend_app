@@ -1,5 +1,6 @@
 import { LogoutOutlined } from '@ant-design/icons';
 import React from 'react';
+import Link from 'next/link';
 import PopupRegistration from '../PopupRegistration';
 import PopupAuthorization from '../PopupAutorization';
 import style from './styled.module.scss';
@@ -20,9 +21,9 @@ const Header = () => {
         <a href="/" className={style.item}>
           Карта фольклора
         </a>
-        <a href="/" className={style.item}>
-          Галерея
-        </a>
+        <Link href="/gallery">
+          <a className={style.item}>Галерея</a>
+        </Link>
         <a href="/" className={style.item}>
           О нас
         </a>

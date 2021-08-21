@@ -14,8 +14,8 @@ const Footer = () => {
             </div>
             <Divider type="vertical" className={style.footer__header__driver} />
             <div className={style.footer__description}>
-              Первая в России карта фольклера и народных сказаний Новогородской
-              области
+              Платформа с первой в России интерактивной картой фольклора и
+              народных сказаний Новгородской области иллюстрированной детьми
             </div>
             <div className={style.footer__nov_logo}>
               <Image
