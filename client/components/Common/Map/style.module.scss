@@ -57,7 +57,7 @@
   padding: 10px;
   // background-color: $bg-color;
   // box-shadow: 0 28px 40px rgb(0 0 0 / 15%);
-  z-index: 1;
+  z-index: 2;
   @include media(tablet) {
     width: 312px;
     height: 500px;
@@ -333,9 +333,10 @@
   display: flex;
   min-height: 663px;
   gap: 10px;
-
+  //box-shadow: 10px 10px 15px 10px rgb(162 160 160 / 15%);
   width: 100%;
   min-height: 80vh;
+  max-height: 760px;
   @include media(tablet) {
     min-height: auto;
   }
@@ -346,14 +347,16 @@
   }
 
   .map_container {
-    width: 100%;
+    position: relative;
+    width: 90%;
+    z-index: 1;
+
     @include media(tablet) {
       height: 500px;
     }
     @include media(smartphone) {
       max-height: 100vw;
     }
-    z-index: 0;
 
     &.marker-info {
       @include media(smartphone) {
@@ -423,3 +426,4 @@
 
   color: #474747;
 }
+
