@@ -1,4 +1,5 @@
 @import 'normalize';
+@import './helpers/_variables.scss';
 @import './fonts/fonts.scss';
 
 body {
@@ -28,4 +29,11 @@ body {
   width: 100%;
   height: 100%;
   background: rgba(#fff, 0.5);
+}
+
+.ant-modal-title {
+  font-family: $ff-title;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 22px !important;
 }
