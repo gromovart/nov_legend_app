@@ -1,10 +1,24 @@
 import { Form, Input, Modal } from 'antd';
+import axios from 'axios';
 import React from 'react';
 import style from './style.module.scss';
 
-const PopupAuthorization = ({ modalVisible, setModal2Visible }) => {
-  const onFinish = (values: any) => {
-    console.log('Success:', values);
+const PopupAuthorization = ({
+  modalVisible,
+  setModal2Visible,
+  setUserData,
+}) => {
+  const onFinish = async (values: any) => {
+    try {
+      const { data } = await axios.post(
+        'http://localhost:8888/api/sign-in',
+        values
+      );
+      setUserData(data);
+      setModal2Visible(false);
+    } catch (e) {
+      console.log(e);
+    }
   };
 
   const onFinishFailed = (errorInfo: any) => {
@@ -28,7 +42,7 @@ const PopupAuthorization = ({ modalVisible, setModal2Visible }) => {
       >
         <Form.Item
           label="Логин"
-          name="name"
+          name="login"
           rules={[{ required: true, message: 'Пожалуйста, введите логин' }]}
         >
           <Input className={style.form__input} />

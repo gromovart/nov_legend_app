@@ -4,6 +4,8 @@ import style from './styled.module.scss';
 
 const Header = () => {
   const [modalVisible, setModal2Visible] = React.useState(false);
+  const [userData, setUserData] = React.useState(null);
+
   return (
     <div className={`container ${style.header__wrapper}`}>
       <div className={style.header__logo}>
@@ -19,21 +21,31 @@ const Header = () => {
         <a href="/" className={style.item}>
           О нас
         </a>
-        <a href="/" className={style.item}>
-          Регистрация
-        </a>
-        <button
-          className={style.btn__sign_up}
-          type="button"
-          onClick={() => {
-            setModal2Visible(true);
-          }}
-        >
-          ВОЙТИ
-        </button>
+        {!userData ? (
+          <>
+            <a href="/" className={style.item}>
+              Регистрация
+            </a>
+
+            <button
+              className={style.btn__sign_up}
+              type="button"
+              onClick={() => {
+                setModal2Visible(true);
+              }}
+            >
+              ВОЙТИ
+            </button>
+          </>
+        ) : (
+          <div className={style.user__name}>{`${
+            userData?.lastName
+          } ${userData?.firstName?.slice(0, 1)}.`}</div>
+        )}
         <PopupAuthorization
           modalVisible={modalVisible}
           setModal2Visible={setModal2Visible}
+          setUserData={setUserData}
         />
       </div>
     </div>
