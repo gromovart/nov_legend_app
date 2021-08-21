@@ -4,6 +4,7 @@ import { TMapData } from './types';
 const initialState: TMapData = {
   markersData: [],
   currentMarker: null,
+  currentBackgroundImg: '',
   isCreateNewRoute: false,
   selectedMarkers: null,
 };
@@ -32,6 +33,11 @@ const mapDataReducer = (
       return {
         ...state,
         selectedMarkers: action.payload,
+      };
+    case MapDataActionsTypes.setBackgroundImgAction:
+      return {
+        ...state,
+        currentBackgroundImg: action.payload,
       };
     default:
       return state;

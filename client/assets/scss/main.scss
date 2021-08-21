@@ -7,7 +7,7 @@ body {
 }
 
 .container {
-  max-width: 1170px;
+  max-width: 1470px;
   margin: 0 auto;
 }
 
@@ -17,16 +17,18 @@ body {
 
 .map__container_wrapper {
   background: url('/nov_footer.jpg');
-  height: 1350px;
+  height: 990px;
   //opacity: 0.25;
   background-size: cover;
 }
 
 .opacity_container {
-  padding-top: 250px;
+  padding-top: 100px;
   width: 100%;
   height: 100%;
   background: rgba(#fff, 0.94);
+  position: relative;
+  overflow: hidden;
 }
 
 .ant-modal-title {
@@ -37,5 +39,31 @@ body {
 }
 
 .leaflet-routing-container {
+  display: none;
+}
+
+.leaflet-popup {
+  width: 70px;
+  height: 70px;
+  border-radius: 190px;
+}
+.leaflet-popup-content-wrapper {
+  width: 100% !important;
+  height: 100% !important;
+  padding: 0;
+  margin: 0;
+  border-radius: 90px !important;
+}
+.leaflet-popup-content {
+  width: 100% !important;
+  height: 100% !important;
+  padding: 5px;
+  margin: 0 !important;
+  border-radius: 90px !important;
+}
+.leaflet-popup-tip-container {
+  top: 68px;
+}
+.leaflet-popup-close-button {
   display: none;
 }

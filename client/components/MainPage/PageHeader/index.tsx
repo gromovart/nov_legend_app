@@ -37,38 +37,39 @@ const PageHeader = () => {
   return (
     <div className={`${style.page__header_wrapper}`}>
       <div className={`container ${style.content__header}`}>
-        {isPlayerVisible ? (
-          <div className={style.content__header__player}>
-            <audio controls>
-              <source src="/gusli.mp3" type="audio/mpeg" />
-            </audio>
-            <Button
-              onClick={() => {
-                setIsPlayerVisible((prev) => !prev);
-              }}
-            >
-              <CloseCircleOutlined />
-            </Button>
-          </div>
-        ) : (
-          <Popover
-            content="Нажмите для воспроизведения музыкального сопровождения"
-            title=""
-            placement="bottomLeft"
-          >
-            <Button
-              className={style.content__header__btn}
-              onClick={() => {
-                setIsPlayerVisible((prev) => !prev);
-              }}
-            >
-              <PlayCircleOutlined className={style.content__header__icon} />
-              <span>Музыкальное сопровождение</span>
-            </Button>
-          </Popover>
-        )}
         <div>
-          <div className={style.description__title}>NOV.Legend</div>
+          <div className={style.description__title}>
+            {isPlayerVisible ? (
+              <div className={style.content__header__player}>
+                <audio controls>
+                  <source src="/gusli.mp3" type="audio/mpeg" />
+                </audio>
+                <Button
+                  onClick={() => {
+                    setIsPlayerVisible((prev) => !prev);
+                  }}
+                >
+                  <CloseCircleOutlined />
+                </Button>
+              </div>
+            ) : (
+              <Popover
+                content="Нажмите для воспроизведения музыкального сопровождения"
+                title=""
+                placement="bottomLeft"
+              >
+                <Button
+                  className={style.content__header__btn}
+                  onClick={() => {
+                    setIsPlayerVisible((prev) => !prev);
+                  }}
+                >
+                  <PlayCircleOutlined className={style.content__header__icon} />
+                  <span>Музыкальное сопровождение</span>
+                </Button>
+              </Popover>
+            )}
+          </div>
           <div className={style.page__header_title}>
             Погрузись в мир <br /> былин
           </div>
@@ -77,6 +78,18 @@ const PageHeader = () => {
             народных сказаний Новгородской области иллюстрированной детьми
           </div>
         </div>
+        <button
+          type="button"
+          className={style.btn__scroll}
+          onClick={() => {
+            window.scroll({
+              top: 1100,
+              behavior: 'smooth',
+            });
+          }}
+        >
+          К интерактивной карте
+        </button>
       </div>
     </div>
   );

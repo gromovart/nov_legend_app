@@ -18,14 +18,25 @@ const FullInfoMarker = ({
   const [isPlayAudio, setIsPlayAudio] = React.useState(false);
   const [visible, setVisible] = React.useState(false);
 
-  const audio = React.useRef(new Audio(`/${newAudio}`));
+  const [audio, setAudio] = React.useState(new Audio(`/${newAudio}`));
 
   const setAudioPlay = () => {
-    if (!isPlayAudio) audio.current.play();
-    if (isPlayAudio) audio.current.pause();
+    if (!isPlayAudio) audio.play();
+    if (isPlayAudio) audio.pause();
 
     setIsPlayAudio((prev) => !prev);
   };
+
+  React.useEffect(() => {
+    setAudio(new Audio(`/${newAudio}`));
+    audio.pause();
+    setIsPlayAudio(false);
+
+    return () => {
+      audio.pause();
+      setIsPlayAudio(false);
+    };
+  }, [name]);
 
   return (
     <div className={style.card__wrapper}>
@@ -48,7 +59,7 @@ const FullInfoMarker = ({
         </button>
         <ScrollWrapper>
           <div className={style.image__wrapper}>
-            {images.map((item) => (
+            {images?.map((item) => (
               <Image width={130} src={`/images/${item}`} />
             ))}
           </div>

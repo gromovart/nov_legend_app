@@ -12,3 +12,6 @@ export const getIsCreateNewRoute = (state: TStore) =>
 
 export const getSelectedMarkers = (state: TStore) =>
   state.mapData.selectedMarkers;
+
+export const getCurrentBackgroundImg = (state: TStore) =>
+  state.mapData.currentBackgroundImg;

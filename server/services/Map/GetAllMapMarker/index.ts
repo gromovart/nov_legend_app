@@ -10,25 +10,33 @@ export default class Service {
     requestMeta: any = {}
   ): Promise<any> => {
     const {
-      query: { mapCategoryId, text, zoomLevel },
+      query: { mapCategoryId: mapCategoryIds, text, zoomLevel },
     } = params;
 
     const responseCondition = app.connection
       .getRepository(MapMarker)
       .createQueryBuilder('mapMarker')
       .select([
-        'mapMarker.id',
-        'mapMarker.lat',
-        'mapMarker.long',
-        'mapMarker.name',
-        'mapMarker.images',
-        'mapMarker.audio',
-        'mapMarker.video',
-        'mapMarker.shortDescription',
-        'mapMarker.description',
-        'mapMarker.documents',
-        'mapMarker.informants',
+        'mapMarker.id AS id',
+        'mapMarker.lat AS lat',
+        'mapMarker.long AS long',
+        'mapMarker.name AS name',
+        'mapMarker.audio AS audio',
+        'mapMarker.video AS video',
+        'mapMarker.shortDescription AS "shortDescription"',
+        'mapMarker.description AS description',
+        'mapMarker.documents AS documents',
+        'mapMarker.informants AS informants',
+        `array_remove(string_to_array(mapMarker.images, ','),'null') AS images`,
+        `array_remove(
+          array_agg(
+            jsonb_strip_nulls(
+              jsonb_build_object('id', "mapCategory"."id",
+                                 'title',"mapCategory"."title"))), '{}'::jsonb) AS "mapCategories"`,
       ])
+      .leftJoin('mapMarker.mapCategoryMapMarker', 'mapCategoryMapMarker')
+      .leftJoin('mapCategoryMapMarker.mapCategory', 'mapCategory')
+      .groupBy('mapMarker.id')
       .where('mapMarker.lat != 0 AND mapMarker.long != 0')
       .addOrderBy('mapMarker.lat', 'DESC')
       .addOrderBy('mapMarker.long', 'DESC');
@@ -47,13 +55,6 @@ export default class Service {
           .groupBy(`substr(mapMarker.s2_path, 1, ${zoomLevel + 1})`);
       }
 
-      if (mapCategoryId) {
-        subQuery
-          .leftJoin('mapMarker.mapCategoryMapMarker', 'mapCategoryMapMarker')
-          .leftJoin('mapCategoryMapMarker.mapCategory', 'mapCategory')
-          .andWhere('mapCategory.id =:mapCategoryId', { mapCategoryId });
-      }
-
       if (text) {
         subQuery.andWhere(`mapMarker.name ILIKE '%'||:text||'%'`, { text });
       }
@@ -61,7 +62,13 @@ export default class Service {
       return `mapMarker.id IN ${subQuery.getQuery()}`;
     });
 
-    const response = await responseCondition.getMany();
+    if (mapCategoryIds) {
+      responseCondition.andWhere('mapCategory.id IN(:...mapCategoryIds)', {
+        mapCategoryIds,
+      });
+    }
+
+    const response = await responseCondition.getRawMany();
 
     return {
       data: response,

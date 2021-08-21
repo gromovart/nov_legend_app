@@ -176,8 +176,8 @@ class App {
       plugin: HapiSwagger,
       options: <HapiSwagger.RegisterOptions>{
         info: {
-          title: 'HIBRAIN',
-          description: 'JSON REST API HIBRAIN',
+          title: 'NOV.LEGEND',
+          description: 'JSON REST API NOV.LEGEND',
           version: process.env.API_VERSION,
         },
         grouping: 'tags',
