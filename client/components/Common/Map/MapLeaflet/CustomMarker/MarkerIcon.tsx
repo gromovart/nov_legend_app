@@ -226,7 +226,6 @@ export const getIcon: (
   return {
     icon: L.icon({
       iconUrl: currentPath,
-
       iconSize: [40, 40], // size of the icon
       iconAnchor: [22, 94], // point of the icon which will correspond to marker's location
       shadowAnchor: [4, 62], // the same for the shadow
@@ -238,7 +237,6 @@ export const getIcon: (
 
 export const newCustomIcon = L.icon({
   iconUrl: '/svg/001-king.png',
-
   iconSize: [35, 35], // size of the icon
   iconAnchor: [22, 94], // point of the icon which will correspond to marker's location
   shadowAnchor: [4, 62], // the same for the shadow

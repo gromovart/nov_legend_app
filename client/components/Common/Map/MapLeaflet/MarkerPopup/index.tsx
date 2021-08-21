@@ -3,12 +3,15 @@ import { Popup } from 'react-leaflet';
 import style from './style.module.scss';
 
 const MarkerPopup = ({ data }: any) => {
-  console.log(data);
-
   return (
     <Popup autoClose={false}>
       <div className={style.popup_preview_wrapper}>
-        <img src={`images/${data?.images?.[0]}`} alt={data?.images?.[0]} />
+        <img
+          src={`${
+            data?.images?.[0] ? `images/${data?.images?.[0]}` : '/nov_logo.png'
+          }`}
+          alt={data?.images?.[0]}
+        />
       </div>
       {/* <div>
         <span className={style.popup_title}>{`Название: `}</span>
