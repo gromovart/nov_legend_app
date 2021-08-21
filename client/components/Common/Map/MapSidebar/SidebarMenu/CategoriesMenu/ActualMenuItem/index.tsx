@@ -1,11 +1,11 @@
 import { SoundOutlined } from '@ant-design/icons/lib/icons';
 import React from 'react';
-import { Image } from 'antd';
-import ModalVideo from './ModalVideo';
-import ScrollWrapper from '../../../../../ScrollWrapper';
+import { useDispatch } from 'react-redux';
 import style from './style.module.scss';
+import { setCurrentMarkerAction } from '../../../../../../../store/MapData/actions';
 
-const ActualMenuItem = ({ title, year, percent, audio: newAudio }) => {
+const ActualMenuItem = ({ title, year, percent, audio: newAudio, data }) => {
+  const dispatch = useDispatch();
   const [isPlayAudio, setIsPlayAudio] = React.useState(false);
   const [visible, setVisible] = React.useState(false);
 
@@ -19,7 +19,11 @@ const ActualMenuItem = ({ title, year, percent, audio: newAudio }) => {
   };
 
   return (
-    <div className={style.card__wrapper}>
+    <div
+      role="presentation"
+      className={style.card__wrapper}
+      onClick={() => dispatch(setCurrentMarkerAction(data))}
+    >
       <div className={style.card__title}>{title}</div>
       <div className={style.card__description}>{year}</div>
       <div className={style.card__description}>Популярность:</div>

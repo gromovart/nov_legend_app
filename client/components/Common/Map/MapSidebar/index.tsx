@@ -49,6 +49,7 @@ const MapSidebar: React.FC<TProps & any> = ({
               audio={item.audio}
               percent={`${getRandom(10, 100)}%`}
               year={`${getRandom(935, 1800)} г.`}
+              data={item}
             />
           ))}
       </ScrollWrapper>
