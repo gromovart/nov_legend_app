@@ -21,7 +21,7 @@ const Header = () => {
           Регистрация
         </a>
         <button className={style.btn__sign_up} type="button">
-          Войти
+          ВОЙТИ
         </button>
       </div>
     </div>

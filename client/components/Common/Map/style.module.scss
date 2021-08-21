@@ -54,8 +54,9 @@
 .sidebar {
   display: flex;
   flex-direction: column;
-  background-color: $bg-color;
-  box-shadow: 0 28px 40px rgb(0 0 0 / 15%);
+  padding: 10px;
+  // background-color: $bg-color;
+  // box-shadow: 0 28px 40px rgb(0 0 0 / 15%);
   z-index: 1;
   @include media(tablet) {
     width: 312px;
@@ -407,8 +408,8 @@
 
 .sidebar__header {
   border-radius: 10px;
-  background: #fafaff;
-  padding: 10px;
+  // background: #fafaff;
+  //padding: 10px;
   margin-bottom: 15px;
 }
 
