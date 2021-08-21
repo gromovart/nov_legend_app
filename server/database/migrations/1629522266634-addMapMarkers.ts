@@ -24,6 +24,9 @@ export class addMapMarkers1629522266634 implements MigrationInterface {
         description: _.description,
         documents: _.documents,
         informants: _.informants,
+        images: _.images,
+        audio: _.audio,
+        video: _.video,
         name: _.title,
       }));
 

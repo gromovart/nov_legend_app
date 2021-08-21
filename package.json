@@ -2,9 +2,10 @@
   "name": "nov_legend_app",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "index.ts",
   "scripts": {
-    "expand": "docker network create $npm_package_config_envs_NETWORK_NAME || true && npm run build-image:server",
+    "deps:install": "cd ./client && npm i && cd ../server && npm i ",
+    "expand": "npm run deps:install && docker network create $npm_package_config_envs_NETWORK_NAME || true && npm run build-image:server",
     "up": "npm run up:postgres || true && npm run up:server || true && npm run up:ftp || true",
     "down": "npm run down:server || true & npm run down:postgres || true & npm run down:ftp || true",
     "start:server": "docker exec $npm_package_config_envs_CONTAINER_NAME_SERVER npm run start",
