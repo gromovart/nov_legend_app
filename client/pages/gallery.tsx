@@ -1,7 +1,9 @@
+import GalleryPage from '../components/GalleryPage';
+
 const LegendPage = () => {
   return (
     <>
-      <div>test</div>
+      <GalleryPage />
     </>
   );
 };
