@@ -31,7 +31,7 @@ const MapSidebar: React.FC<TProps & any> = ({
 }) => {
   const selectedMarker = useSelector(getCurrentMarkerData);
   const selectedMarkers = useSelector(getSelectedMarkers);
-  console.log(selectedMarkers);
+
   return (
     <div className={style.sidebar}>
       <HeaderSidebar

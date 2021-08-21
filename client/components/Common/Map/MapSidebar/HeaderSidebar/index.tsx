@@ -6,6 +6,7 @@ import SearchInput from './SearchInput';
 import {
   setCurrentMarkerAction,
   setIsCreateRouteAction,
+  setSelectedMarkersAction,
 } from '../../../../../store/MapData/actions';
 
 type THeaderSidebarProps = {
@@ -27,6 +28,7 @@ const HeaderSidebar: React.FC<THeaderSidebarProps> = ({
   // const searchCount = useSelector(getSearchCount);
   const clickHandler = () => {
     dispatch(setCurrentMarkerAction(null));
+    dispatch(setSelectedMarkersAction(null));
   };
 
   return (

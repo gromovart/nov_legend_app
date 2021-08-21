@@ -6,6 +6,7 @@ import { createControlComponent } from '@react-leaflet/core';
 import L from 'leaflet';
 import { useDispatch, useSelector } from 'react-redux';
 import { CheckCircleOutlined } from '@ant-design/icons';
+import { Tooltip } from 'antd';
 import Markers from './CustomMarker';
 import {
   setIsCreateRouteAction,
@@ -61,48 +62,52 @@ const MapDynamicView = ({
   return (
     <>
       {isCreatingNewRoute && (
-        <button
-          style={{
-            position: 'absolute',
-            top: 85,
-            left: 10,
-            zIndex: 3,
-            border: '2px solid #ccc',
-            background: '#fff',
-            width: 32,
-            height: 32,
-            borderRadius: '4px',
-            cursor: 'pointer',
-          }}
-          type="button"
-          onClick={() => {
-            setCreateRoute((prev) => !prev);
-            dispatch(setIsCreateRouteAction(false));
-            dispatch(setSelectedMarkersAction(selectedMarkers));
-          }}
-        >
-          <CheckCircleOutlined style={{ transform: 'scale(1.3)' }} />
-        </button>
+        <Tooltip title="Подтвердить маршрут" placement="right">
+          <button
+            style={{
+              position: 'absolute',
+              top: 85,
+              left: 10,
+              zIndex: 3,
+              border: '2px solid #ccc',
+              background: '#fff',
+              width: 32,
+              height: 32,
+              borderRadius: '4px',
+              cursor: 'pointer',
+            }}
+            type="button"
+            onClick={() => {
+              setCreateRoute((prev) => !prev);
+              dispatch(setIsCreateRouteAction(false));
+              dispatch(setSelectedMarkersAction(selectedMarkers));
+            }}
+          >
+            <CheckCircleOutlined style={{ transform: 'scale(1.3)' }} />
+          </button>
+        </Tooltip>
       )}
       {!isCreatingNewRoute && (
-        <button
-          type="button"
-          onClick={createHandler}
-          style={{
-            position: 'absolute',
-            top: 85,
-            left: 10,
-            zIndex: 3,
-            border: '2px solid #ccc',
-            background: '#fff',
-            width: 32,
-            height: 32,
-            borderRadius: '4px',
-            cursor: 'pointer',
-          }}
-        >
-          <Icon />
-        </button>
+        <Tooltip title="Построить маршрут" placement="right">
+          <button
+            type="button"
+            onClick={createHandler}
+            style={{
+              position: 'absolute',
+              top: 85,
+              left: 10,
+              zIndex: 3,
+              border: '2px solid #ccc',
+              background: '#fff',
+              width: 32,
+              height: 32,
+              borderRadius: '4px',
+              cursor: 'pointer',
+            }}
+          >
+            <Icon />
+          </button>
+        </Tooltip>
       )}
       <MapContainer
         style={{ width: '100%', height: '100%', zIndex: 0 }}
