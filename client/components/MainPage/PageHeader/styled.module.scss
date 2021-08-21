@@ -1,34 +1,61 @@
+@import '../../../assets/scss/helpers/variables';
+
 .page__header_wrapper {
   display: flex;
   background-color: #f4f6ff;
-  min-height: 828px;
-  background: url('/Group262.png');
+  min-height: 100vh;
+  background: url('/sadco.jpg');
   background-position: right top;
   background-repeat: no-repeat;
   margin-bottom: 76px;
+  box-shadow: inset 0px 0px 40px 40px #ffffff;
 }
 
 .content__header {
   display: flex;
-  justify-content: flex-end;
+  padding-top: 120px;
+  justify-content: space-between;
   flex-direction: column;
+  align-items: flex-start;
   height: 700px;
   width: 100%;
+  &__player {
+    button {
+      border: none;
+      background: inherit;
+    }
+    display: flex;
+    align-items: center;
+    svg {
+      height: 25px;
+      width: 25px;
+    }
+  }
+  &__icon {
+    margin-top: 10px;
+    svg {
+      height: 25px;
+      width: 25px;
+    }
+  }
+  &__btn {
+    border: none;
+    background: inherit;
+  }
 }
 
 .description__title {
-  font-family: Inter;
+  font-family: $ff-title;
   font-style: normal;
   font-weight: bold;
   font-size: 16px;
   line-height: 26px;
   color: #666666;
-
   margin-bottom: 12px;
 }
 
 .page__header_title {
-  font-family: Inter;
+  font-family: $ff-title;
   font-style: normal;
   font-weight: bold;
   font-size: 60px;
@@ -38,10 +65,10 @@
 }
 
 .header__description {
-  font-family: Inter;
+  font-family: $ff;
   font-style: normal;
   font-weight: normal;
-  font-size: 16px;
+  font-size: 22px;
   line-height: 26px;
 
   color: #666666;
