@@ -9,7 +9,7 @@ export default class Service {
     requestMeta: any = {}
   ): Promise<any> => {
     const {
-      query: { mapCategoryId },
+      query: { mapCategoryId, text },
     } = params;
 
     const responseCondition = app.connection
@@ -28,6 +28,8 @@ export default class Service {
       .addOrderBy('mapMarker.lat', 'DESC')
       .addOrderBy('mapMarker.long', 'DESC');
 
+    const totalCount = await responseCondition.getCount();
+
     if (mapCategoryId) {
       responseCondition
         .leftJoin('mapMarker.mapCategoryMapMarker', 'mapCategoryMapMarker')
@@ -35,8 +37,18 @@ export default class Service {
         .where('mapCategory.id = :mapCategoryId', { mapCategoryId });
     }
 
+    if (text) {
+      responseCondition.andWhere(`mapMarker.name ILIKE '%'||:text||'%'`, {
+        text,
+      });
+    }
+
     const response = await responseCondition.getMany();
 
-    return response;
+    return {
+      data: response,
+      totalCount,
+      count: response.length,
+    };
   };
 }
