@@ -9,7 +9,7 @@ export enum MapDataActionsTypes {
 export const getMarkersAction = (params: TMarkersData) => {
   return async (dispatch: any) => {
     try {
-      const { data } = await axios.get(`http://0.0.0.0:8888/api/map-marker`, {
+      const { data } = await axios.get(`http://localhost:8888/api/map-marker`, {
         params,
       });
       dispatch({ type: MapDataActionsTypes.getMarkersAction, payload: data });
