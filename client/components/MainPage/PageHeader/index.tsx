@@ -29,6 +29,7 @@ const PageHeader = () => {
       placement: 'topLeft',
     });
   };
+
   useEffect(() => {
     openNotification();
   }, []);
@@ -62,6 +63,7 @@ const PageHeader = () => {
               }}
             >
               <PlayCircleOutlined className={style.content__header__icon} />
+              <span>Музыкальное сопровождение</span>
             </Button>
           </Popover>
         )}
