@@ -32,15 +32,8 @@ const ChooseBlock = () => {
   };
 
   return (
-    <div className="container">
-      <div className={style.choose__block_wrapper}>
-        <Image
-          src="/sofia.jpg"
-          alt="image"
-          layout="fixed"
-          height="650px"
-          width="650px"
-        />
+    <div className={style.choose__block_wrapper}>
+      <div className={`container ${style.choose__content__wrapper}`}>
         <div className={style.choose__content}>
           <div className={style.choose__title}>
             {isPlayerVisible ? (
