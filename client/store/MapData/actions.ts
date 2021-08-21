@@ -21,6 +21,9 @@ export const getMarkersAction = (params: TMarkersData) => {
 
 export const setCurrentMarkerAction = (params: any) => {
   return (dispatch: any) => {
-    dispatch({ type: MapDataActionsTypes.getMarkersAction, payload: params });
+    dispatch({
+      type: MapDataActionsTypes.setCurrentMarkerAction,
+      payload: params,
+    });
   };
 };
