@@ -1,7 +1,9 @@
 import React from 'react';
+import PopupAuthorization from '../PopupAutorization';
 import style from './styled.module.scss';
 
 const Header = () => {
+  const [modalVisible, setModal2Visible] = React.useState(false);
   return (
     <div className={`container ${style.header__wrapper}`}>
       <div className={style.header__logo}>
@@ -20,9 +22,19 @@ const Header = () => {
         <a href="/" className={style.item}>
           Регистрация
         </a>
-        <button className={style.btn__sign_up} type="button">
+        <button
+          className={style.btn__sign_up}
+          type="button"
+          onClick={() => {
+            setModal2Visible(true);
+          }}
+        >
           ВОЙТИ
         </button>
+        <PopupAuthorization
+          modalVisible={modalVisible}
+          setModal2Visible={setModal2Visible}
+        />
       </div>
     </div>
   );
