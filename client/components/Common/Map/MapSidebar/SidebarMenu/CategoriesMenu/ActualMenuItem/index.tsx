@@ -27,12 +27,14 @@ const ActualMenuItem = ({ title, year, percent, audio: newAudio, data }) => {
       onClick={() => dispatch(setCurrentMarkerAction(data))}
     >
       <div className={style.title__wrapper}>
-        <Image
-          width={50}
-          height={50}
-          layout="fixed"
-          src={getIcon(data?.mapCategories?.[0]?.title)?.path}
-        />
+        <div className={style.image__block}>
+          <Image
+            width={50}
+            height={50}
+            layout="fixed"
+            src={getIcon(data?.mapCategories?.[0]?.title)?.path}
+          />
+        </div>
         <div className={style.card__title}>{title}</div>
       </div>
       <div className={style.card__description}>{year}</div>
