@@ -1,22 +1,12 @@
-import { IDecoratedRequest } from '../../utils/App';
 import app from '../../app';
-import AuthServices from '../../services/Auth';
+import MapServices from '../../services/Map';
 
 export default {
-  signUpUser: async (
-    request: IDecoratedRequest<{
-      firstName: string;
-      lastName: string;
-      middleName: string;
-      login: string;
-      password: string;
-      isActive: boolean;
-    }>
-  ): Promise<any> => {
-    const { payload } = request;
+  GetAll: async (request): Promise<any> => {
+    const { query } = request;
     try {
-      return await AuthServices.signUpUser({
-        payload,
+      return await MapServices.getAll({
+        query,
       });
     } catch (e) {
       app.log.error(e);

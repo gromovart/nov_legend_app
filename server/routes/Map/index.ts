@@ -92,7 +92,7 @@ export default [
   {
     method: 'GET',
     path: '/map-marker',
-    handler: async () => ({}),
+    handler: MapControllers.GetAll,
     options: {
       cors: true,
       validate: {

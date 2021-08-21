@@ -124,9 +124,7 @@ export const getAllMapMarkerQuery = Joi.object({
   zoomLevel: Joi.number().required().min(4).max(18),
   mapCategoryId: Joi.number().optional().example([1]),
   state: Joi.string().optional(),
-})
-  .concat(mapName)
-  .concat(findOptionalQuery);
+}).concat(findOptionalQuery);
 
 export const readMarkerParams = idParams;
 

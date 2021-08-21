@@ -1,25 +1,13 @@
-import SignUpUser from './SignUpUser';
-import AuthUser from './AuthUser';
-import SignIn from './SignIn';
+import GetAll from './GetAll';
 
 class Service {
-  public static readonly nameService = 'AuthService';
+  public static readonly nameService = 'MapService';
 
-  public signUpUser: SignUpUser['signUpUser'];
+  public getAll: GetAll['getAll'];
 
-  public authUser: AuthUser['authUser'];
-
-  public signIn: SignIn['signIn'];
-
-  constructor(
-    SignUpUserService: SignUpUser,
-    AuthUserService: AuthUser,
-    SignInService: SignIn
-  ) {
-    this.signUpUser = SignUpUserService.signUpUser;
-    this.authUser = AuthUserService.authUser;
-    this.signIn = SignInService.signIn;
+  constructor(GetAllService: GetAll) {
+    this.getAll = GetAllService.getAll;
   }
 }
 
-export default new Service(new SignUpUser(), new AuthUser(), new SignIn());
+export default new Service(new GetAll());
