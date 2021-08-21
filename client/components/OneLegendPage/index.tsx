@@ -1,5 +1,9 @@
-import Header from '../Common/Header';
+import dynamic from 'next/dynamic';
 import PageHeader from './PageHeader';
+
+const Header = dynamic(() => import('../Common/Header'), {
+  ssr: false,
+});
 
 const OneLegendPage = () => {
   return (

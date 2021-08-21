@@ -16,6 +16,7 @@ const PopupAuthorization = ({
       );
       setUserData(data);
       setModal2Visible(false);
+      localStorage.setItem('userData', JSON.stringify(data));
     } catch (e) {
       console.log(e);
     }
