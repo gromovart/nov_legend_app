@@ -17,15 +17,17 @@ const MainPage = () => {
         <Header />
       </div>
       <PageHeader />
-      <ChooseBlock />
+
       <div className="map__container_wrapper">
         <div className="opacity_container">
+          <div style={{ background: '/med.jpg' }} />
           <div className="container">
             <MapComponent />
-            <Footer />
           </div>
         </div>
       </div>
+      <ChooseBlock />
+      <Footer />
     </>
   );
 };
