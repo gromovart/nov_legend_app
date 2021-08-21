@@ -8,7 +8,7 @@ const PopupAuthorization = ({
   setModal2Visible,
   setUserData,
 }) => {
-  const onFinish = async (values: any) => {
+  const onFinish = async (values: { login?: string; password?: string }) => {
     try {
       const { data } = await axios.post(
         'http://localhost:8888/api/sign-in',
