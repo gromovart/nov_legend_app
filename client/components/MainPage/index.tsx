@@ -14,6 +14,8 @@ const Header = dynamic(() => import('../Common/Header'), {
 
 const MainPage = () => {
   const currentBackgroundImg = useSelector(getCurrentBackgroundImg);
+  console.log(currentBackgroundImg);
+
   return (
     <>
       <div className="container">

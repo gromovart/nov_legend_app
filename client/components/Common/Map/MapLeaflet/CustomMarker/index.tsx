@@ -3,8 +3,15 @@ import { Marker } from 'react-leaflet';
 import { useDispatch, useSelector } from 'react-redux';
 import MarkerPopup from '../MarkerPopup';
 import { getIcon } from './MarkerIcon';
+<<<<<<< HEAD
+import {
+  setBackgroundImgAction,
+  setCurrentMarkerAction,
+} from '../../../../../store/MapData/actions';
+=======
 import { setCurrentMarkerAction } from '../../../../../store/MapData/actions';
 import { getIsCreateNewRoute } from '../../../../../store/MapData/selectors';
+>>>>>>> 09dd506a4f72ada081562070d71bcb87b8f3eb4a
 
 const VenueMarkers: React.FC<any> = ({
   marker,
@@ -23,15 +30,42 @@ const VenueMarkers: React.FC<any> = ({
     lat: marker.lat,
     lng: marker.long,
   };
+
+  const getBg: (
+    type:
+      | 'Легенды'
+      | 'Предания'
+      | 'Сказки'
+      | 'Былички'
+      | 'Озёра'
+      | 'Источники'
+      | 'Камни'
+      | 'Другое'
+  ) => any = (type) => {
+    let currentPath = '';
+    if (type === 'Легенды') currentPath = 'veto';
+    if (type === 'Предания') currentPath = 'fish';
+    if (type === 'Сказки') currentPath = 'crocodil';
+    if (type === 'Былички') currentPath = 'med';
+    if (type === 'Озёра') currentPath = 'fish';
+    if (type === 'Источники') currentPath = 'fish';
+    if (type === 'Камни') currentPath = 'beresta';
+    if (type === 'Другое') currentPath = 'veto';
+    console.log(currentPath, 'hetbg');
+
+    return currentPath;
+  };
   const clickHandler = (e: any) => {
     if (isCreatingNewRoute) {
       createNewRouteHandler(marker);
+      dispatch(setBackgroundImgAction(getBg(marker?.mapCategories?.[0]?.title)));
     } else {
       e.target.openPopup();
       dispatch(setCurrentMarkerAction(marker));
+      dispatch(setBackgroundImgAction(getBg(marker?.mapCategories?.[0]?.title)));
     }
   };
-  getIcon(marker?.mapCategories?.[0]?.title);
+
   return (
     <>
       <Marker
