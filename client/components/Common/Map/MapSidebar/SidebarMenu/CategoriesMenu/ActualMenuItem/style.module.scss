@@ -19,16 +19,14 @@
 }
 
 .card__title {
-  font-family: Inter;
+  font-family: "ArnoldBocklin";
   font-style: normal;
-  font-weight: bold;
-  font-size: 16px;
+  font-size: 15px;
   line-height: 26px;
-  padding-right: 26px;
 }
 
 .card__description {
-  font-family: Inter;
+  font-family: $ff;
   font-style: normal;
   font-weight: normal;
   font-size: 16px;
@@ -111,7 +109,7 @@
 
 .title__wrapper {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 15px;
   margin-bottom: 10px;
 
@@ -120,4 +118,22 @@
 
 .image__block {
   min-width: 50px;
+}
+
+.btn__interactive {
+  margin-top: 15px;
+  border: none;
+  outline: none;
+  background: transparent;
+  cursor: pointer;
+  text-decoration: underline;
+  padding: 0;
+  font-family: "ArnoldBocklin";
+  font-style: normal;
+  font-size: 18px;
+  line-height: 26px;
+
+  &:hover {
+    text-decoration: none;
+  }
 }
