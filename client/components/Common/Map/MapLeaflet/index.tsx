@@ -14,6 +14,7 @@ import {
   setShowCreateRouteAction,
 } from '../../../../store/MapData/actions';
 import {
+  getFiltredData,
   getIsCreateNewRoute,
   getSelectedMarkers,
   getShowCreateRoute,
@@ -22,6 +23,7 @@ import Icon from '../Icon';
 // import RoutingMachine from '../RoutingMachines';
 let distance;
 let time;
+let i;
 const createRoutineMachineLayer = () => {
   const selectedMarkers = useSelector(getSelectedMarkers);
   const instance = L.Routing.control({
@@ -58,6 +60,7 @@ const MapDynamicView = ({
   const dispatch = useDispatch();
   const [map, setMap] = useState(null);
   const [position, setPosition] = useState(null);
+
   const selectedMarkers = useSelector(getSelectedMarkers);
   const createNewRouteHandler = (markerData: any) => {
     if (selectedMarkers) {
@@ -72,7 +75,7 @@ const MapDynamicView = ({
   const createHandler = () => {
     dispatch(setIsCreateRouteAction(true));
   };
-
+  const filtredData = useSelector(getFiltredData);
   return (
     <>
       {isCreatingNewRoute && (
@@ -145,7 +148,16 @@ const MapDynamicView = ({
             />
           ))}
         {!showCreateRoute &&
+          (!filtredData || filtredData?.length === 0) &&
           markersData?.map((marker: any) => (
+            <Markers
+              key={marker.title}
+              marker={marker}
+              createNewRouteHandler={createNewRouteHandler}
+            />
+          ))}
+        {filtredData &&
+          filtredData?.map((marker: any) => (
             <Markers
               key={marker.title}
               marker={marker}

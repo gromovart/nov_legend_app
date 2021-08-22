@@ -6,6 +6,7 @@ import ActualMenuItem from './SidebarMenu/CategoriesMenu/ActualMenuItem';
 import ScrollWrapper from '../../ScrollWrapper';
 import {
   getCurrentMarkerData,
+  getFiltredData,
   getSelectedMarkers,
 } from '../../../../store/MapData/selectors';
 import FullInfoMarker from './SidebarMenu/FullInfoMarker';
@@ -31,7 +32,7 @@ const MapSidebar: React.FC<TProps & any> = ({
 }) => {
   const selectedMarker = useSelector(getCurrentMarkerData);
   const selectedMarkers = useSelector(getSelectedMarkers);
-
+  const filtredData = useSelector(getFiltredData);
   return (
     <div className={style.sidebar}>
       <HeaderSidebar
@@ -41,6 +42,17 @@ const MapSidebar: React.FC<TProps & any> = ({
         value={value}
       />
       <ScrollWrapper maxHeight={800}>
+        {filtredData &&
+          filtredData.length !== 0 &&
+          filtredData.map((item) => (
+            <ActualMenuItem
+              title={item.name}
+              audio={item.audio}
+              percent={`${item.percent}%`}
+              year={`${item.year} г.`}
+              data={item}
+            />
+          ))}
         {selectedMarker && (
           <FullInfoMarker
             {...selectedMarker}

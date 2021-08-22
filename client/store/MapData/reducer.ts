@@ -3,6 +3,7 @@ import { TMapData } from './types';
 
 const initialState: TMapData = {
   markersData: [],
+  filtredData: null,
   currentMarker: null,
   currentBackgroundImg: '',
   isCreateNewRoute: false,
@@ -48,6 +49,11 @@ const mapDataReducer = (
       return {
         ...state,
         showCreateRoute: action.payload,
+      };
+    case MapDataActionsTypes.setFiltredDataAction:
+      return {
+        ...state,
+        filtredData: action.payload,
       };
     default:
       return state;

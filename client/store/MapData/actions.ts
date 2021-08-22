@@ -8,6 +8,7 @@ export enum MapDataActionsTypes {
   setSelectedMarkersAction = 'setSelectedMarkersAction',
   setBackgroundImgAction = 'setBackgroundImg',
   setShowCreateRouteAction = 'setShowCreateRouteAction',
+  setFiltredDataAction = 'setFiltredDataAction',
 }
 
 export const getMarkersAction = (params: TMarkersData) => {
@@ -63,6 +64,15 @@ export const setShowCreateRouteAction = (params: any) => {
   return (dispatch: any) => {
     dispatch({
       type: MapDataActionsTypes.setShowCreateRouteAction,
+      payload: params,
+    });
+  };
+};
+
+export const setFiltredDataAction = (params: any) => {
+  return (dispatch: any) => {
+    dispatch({
+      type: MapDataActionsTypes.setFiltredDataAction,
       payload: params,
     });
   };

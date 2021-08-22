@@ -18,3 +18,5 @@ export const getCurrentBackgroundImg = (state: TStore) =>
 
 export const getShowCreateRoute = (state: TStore) =>
   state.mapData.showCreateRoute;
+
+export const getFiltredData = (state: TStore) => state.mapData.filtredData;

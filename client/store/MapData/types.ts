@@ -14,4 +14,5 @@ export type TMapData = {
   selectedMarkers: any[];
   currentBackgroundImg: string;
   showCreateRoute: boolean;
+  filtredData: any[];
 };
