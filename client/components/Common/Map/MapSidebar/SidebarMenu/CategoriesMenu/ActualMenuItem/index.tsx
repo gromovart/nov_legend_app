@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { getIcon } from '../../../../MapLeaflet/CustomMarker/MarkerIcon';
 import style from './style.module.scss';
 import { setCurrentMarkerAction } from '../../../../../../../store/MapData/actions';
+import { RenderComponent } from '../../../../../../MainPage/ThreeFiber';
 
 const ActualMenuItem = ({ title, year, percent, audio: newAudio, data }) => {
   const dispatch = useDispatch();
@@ -49,6 +50,18 @@ const ActualMenuItem = ({ title, year, percent, audio: newAudio, data }) => {
       >
         <SoundOutlined />
       </button>
+      <button
+        type="button"
+        className={style.btn__interactive}
+        onClick={(event) => {
+          event.stopPropagation();
+          setVisible(true);
+        }}
+      >
+        Интерактивный тур
+      </button>
+      <RenderComponent visible={visible} setVisible={setVisible} />
+
       {/* <ScrollWrapper> */}
       {/*  <div className={style.image__wrapper}> */}
       {/*    <Image */}
