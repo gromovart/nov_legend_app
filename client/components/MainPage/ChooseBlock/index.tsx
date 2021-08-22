@@ -82,7 +82,7 @@ const ChooseBlock = () => {
           <div className={style.choose__lists_item}>
             <div className={style.right__choose}>
               <div className={style.list__item}>
-                Интерактивная карта фольклера
+                Интерактивная карта фольклора
               </div>
               <div className={style.list__item}>
                 Исторические факты и древние сказания
