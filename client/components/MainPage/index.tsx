@@ -7,6 +7,7 @@ import Footer from '../Common/Footer';
 import MapComponent from '../Common/Map';
 import style from './style.module.scss';
 import { getCurrentBackgroundImg } from '../../store/MapData/selectors';
+import { RenderComponent } from './ThreeFiber';
 
 const Header = dynamic(() => import('../Common/Header'), {
   ssr: false,
